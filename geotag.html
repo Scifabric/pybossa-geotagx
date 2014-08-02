@@ -1,0 +1,443 @@
+<style>
+    .steps {
+        display: none;
+    }
+</style>
+<script>
+/* Start of Help Popup Modular Script*/
+$( document ).ready(function() {
+	$("*[data-toggle=tooltip]").tooltip();
+	$(".help_popup a").click(function(event){
+		event.preventDefault();
+		$(".help_popup_description",$(this).parent()).toggle();
+		if($(".help_popup_description",$(this).parent()).css("display")=="block") {
+			$(this).html("Hide the help!");
+		} else
+			$(this).html("Click here!");
+	});
+});
+/* End of Help Popup Modular Script*/
+</script>
+<div class="row skeleton"> 
+    <div id="area0" class="col-xs-6">
+        <!-- Questionary -->
+        <!-- Step 0-->
+        <div id="step_0" class="steps">
+            <h1>Is this photo spam?</h1>
+				<p>If this is an advertisement or similar select "No"</p>
+				<p>Selecting "Yes" will skip this photo</p>
+				<p>Selecting "No" or "I don't know" will allow you to go ahead with the analysis</p>
+				<p>If you are not sure, select "No" or "I don't know"</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_0 btn btn-danger btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_0 btn btn-success  btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+                <button class="step_0 btn btn-answer" value='NoPhoto'><i class="fa fa-white fa-exclamation"></i> No photo</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                <button class="step_0 btn btn-answer" data-toggle="tooltip" data-placement="top" data-original-title="You sure you dont know?" value='Unknown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 0 -->
+
+				<!-- Step 1-->
+        <div id="step_1" class="steps">
+            <h1>Can you geo-localize the photo in the map?</h1>
+			<p>Use the DRAW button to describe a circular area where you think the photo might have been shot.</p>
+            <p>
+            <a target="_blank" id="uri" class="btn" href="#"><i class="icon icon-white icon-search"></i>View photo context</a>
+            </p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+
+		
+		  <div id="map" class="smallmap olMap" style="border:1px solid #000;width:100%;height:300px;"></div>
+
+        <div id="docs">
+		<a class="btn btn-info" href="javascript:void(0)" onClick="polygonControl.activate();" >Click to Draw a circle area</a><br>
+		<a class="btn btn-info"  href="javascript:void(0)" onClick="polygonControl.deactivate();" >Click to Move the map</a><br><br>
+		<input type="text" value="Search here..." id="indirizzo" style="margin-right:15px;">
+		<a class="btn btn-info"  href="javascript:void(0)" onClick="reach($('#indirizzo').val());" >Search a City</a>
+		<span id="coords"></span><br>
+		<span id="area"></span><br>
+            <p>The control allows you to draw a circle, that reports its coordinates
+            after creation. Click and Hold down to draw a 
+            circle with the mouse.</p>
+			 
+        </div>
+ <button class="step_1 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i>OK, save my answer!</button>
+              <button class="step_1 btn btn-primary btn-answer" value='Unknown'>I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 1 -->
+		
+        <!-- Last Stepp -->
+        <div id="last_step" class="steps">
+            <h1>Thanks! You have fully analyzed one picture</h1>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="last_step btn btn-answer btn-large btn-success" value='Submit'>Save it and load another one</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Last Step-->
+		
+        <!-- End questionary -->
+        <div style="margin-top:5px;">
+            <button class="back btn btn-answer" style="display:none;"><i class="fa fa-chevron-left"></i> Go to previous step</button>
+        </div>
+    </div>
+    <!--<div id="img-details" class="col-xs-4">-->
+        <!-- Collapse -->
+        <!--<div class="accordion" id="accordion2">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                       EXIF data 
+                    </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+                    <div id="exif" class="accordion-inner">
+                        This picture does not have any EXIF data.
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- End collapse -->
+        <!--</div>-->
+    <!-- +FC UNOSAT ZOOM MODIFICATION -->
+    <div id="area1" class="col-xs-6 affix-top">
+		<div class="row">
+			<div class="col-xs-12" id="photo-link">
+					<img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
+			</div>
+			<div class="col-xs-12" style="margin-top:10px;">
+					<a href="javascript:zoomin()" class="btn btn-primary">Zoom IN</a>
+					&nbsp;|&nbsp;
+					<a href="javascript:zoomout()"  class="btn btn-primary">Zoom OUT</a>
+					&nbsp;|&nbsp;
+					<a id="img_source" target="_blank" href="#"  class="btn btn-primary">View Photo Source</a>
+			</div>
+		</div>
+    </div>
+	<!-- -FC UNOSAT ZOOM MODIFICATION -->
+</div><!-- End of Skeleton Row -->
+
+<div class="row">
+    <!-- Success and Error Messages for the user --> 
+    <div class="col-xs-6 col-xs-offset-2" style="height:50px">
+        <div id="success" class="alert alert-success" style="display:none;">
+            <a class="close">×</a>
+            <strong>Well done!</strong> Your answer has been saved
+        </div>
+        <div id="loading" class="alert alert-info" style="display:none;">
+            <a class="close">×</a>
+            Loading next task...
+        </div>
+        <div id="taskcompleted" class="alert alert-info" style="display:none;">
+            <strong>The task has been completed!</strong> Thanks a lot!
+        </div>
+        <div id="finish" class="alert alert-success" style="display:none;">
+            <strong>Congratulations!</strong> You have participated in all available tasks!
+            <br/>
+            <div class="alert-actions">
+                <a class="btn small" href="/">Go back</a>
+                <a class="btn small" href="/app">or, Check other applications</a>
+            </div>
+        </div>
+        <div id="error" class="alert alert-error" style="display:none;">
+            <a class="close">×</a>
+            <strong>Error!</strong> Something went wrong, please contact the site administrators
+        </div>
+    </div> <!-- End Success and Error Messages for the user -->
+</div> <!-- End of Row -->
+
+<script type="text/javascript" src="/static/vendor/jquery.js"></script>
+	<link rel="stylesheet" href="/static/js/vendor/geotag/theme/default/style.css" type="text/css">
+        <script src="/static/js/vendor/geotag/OpenLayers.js"></script>
+
+		
+		
+		
+		 <script type="text/javascript">
+             var lon = 5;
+            var lat = 40;
+            var zoom = 0;
+            var map, layer;
+			var polygonLayer;
+			var polygonControl;
+			function setOptions(options) {
+				polygonControl.handler.setOptions(options);
+			}
+		
+			function setSize(fraction) {
+				var radius = fraction * map.getExtent().getHeight();
+				polygonControl.handler.setOptions({radius: radius,angle: 0});
+			}
+		
+			function onFeaturesAdded(event){
+				polygonControl.deactivate();
+				var bounds = event.features[0].geometry.getBounds().getCenterLonLat();
+				var square_meters=event.features[0].geometry.getGeodesicArea();
+				var km_area=square_meters/1000000;
+				
+          
+
+				$("#coords").html(bounds.toShortString());
+				$("#area").html(km_area.toFixed(3)+ " km<sup>2</" + "sup>");
+			}
+			
+			function misura_area(event) {
+			
+			  var geometry = event.features[0].geometry;
+            var units = event.features[0].units;
+            var order = event.features[0].order;
+            var measure = event.features[0].measure;
+
+            var out = "";
+            if(order == 1) {
+                out += "measure: " + measure.toFixed(3) + " " + units;
+            } else {
+                out += "measure: " + measure.toFixed(3) + " " + units + "<sup>2</" + "sup>";
+            }
+			$("#area").html(out);
+			}
+			
+			function reach(this_addr) {
+				// As this action could take some time, start the spinner
+				// Geocode the city using Nominatim OSM service
+				
+				$.getJSON('http://nominatim.openstreetmap.org/search/' + this_addr + '?format=json&limit=1', function(output) {
+				
+					if (output.length >= 1) {
+						// Clean previous markers
+				var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        var position       = new OpenLayers.LonLat(output[0].lon,output[0].lat).transform( fromProjection, toProjection);
+						map.setCenter(position, 11);
+						
+					}
+					else {
+						$("#indirizzo").val("Not Found!");
+					}
+				});
+			}
+var is_initiated=0;
+            function init_map(){
+		if(is_initiated==1) return;
+              is_initiated=1;
+                map = new OpenLayers.Map({
+        div: "map",
+        allOverlays: true
+    });
+	 layer = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+                        "http://vmap0.tiles.osgeo.org/wms/vmap0" , {layers: 'basic'} );
+				polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer");
+				
+       layer2  =        new OpenLayers.Layer.OSM("OpenStreetMap");
+         
+				polygonLayer.events.on({
+					featuresadded: onFeaturesAdded
+				});
+				
+				map.addControl(new OpenLayers.Control.MousePosition());
+				
+		
+				polyOptions = {sides: 40};
+				polygonControl = new OpenLayers.Control.DrawFeature(polygonLayer,
+                                            OpenLayers.Handler.RegularPolygon,
+                                            {handlerOptions: polyOptions});
+            
+				
+				map.addControl(polygonControl);
+				
+				
+				
+				polygonControl.handler.callbacks.create = function(data) {
+					
+					if(polygonLayer.features.length > 0)
+					{
+						polygonLayer.removeAllFeatures();
+					}
+				}
+				
+				
+			
+              /*  var control = new OpenLayers.Control();
+                OpenLayers.Util.extend(control, {
+                    draw: function () {
+                        // this Handler.Box will intercept the shift-mousedown
+                        // before Control.MouseDefault gets to see it
+                        this.box = new OpenLayers.Handler.Box( control,
+                            {"done": this.notice},
+                            {keyMask: OpenLayers.Handler.MOD_SHIFT});
+                        this.box.activate();
+                    },
+
+                    notice: function (bounds) {
+                        var ll = map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.left, bounds.bottom)); 
+                        var ur = map.getLonLatFromPixel(new OpenLayers.Pixel(bounds.right, bounds.top)); 
+                        alert(ll.lon.toFixed(4) + ", " + 
+                              ll.lat.toFixed(4) + ", " + 
+                              ur.lon.toFixed(4) + ", " + 
+                              ur.lat.toFixed(4));
+                    }
+                });*/
+	
+
+    var osm = new OpenLayers.Layer.OSM();
+
+                map.addLayers([layer2,polygonLayer]);
+				
+               // map.addControl(control);
+                map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+				
+            }
+			
+			
+        </script>
+
+<!-- +FC UNOSAT WORKFLOW/ZOOM MODIFICATION -->
+<script src="/static/js/pybossa/unosat.js"></script>
+<!-- -FC UNOSAT WORKFLOW/ZOOM MODIFICATION -->
+
+<script>
+
+function zoomin(){
+    $("#photo-link").addClass("zoomed");
+
+}
+
+function zoomout() {
+    $("#photo-link").removeClass("zoomed");
+    
+}
+pybossa.taskLoaded(function(task, deferred) {
+    if ( ! $.isEmptyObject(task) ) {
+        // load image from flickr
+        var img = $('<img />');
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+        img.attr('src', task.info.url);
+        img.attr('id', 'anno_' + task.id);
+        img.addClass('img-polaroid');
+        img.addClass('annotable');
+        task.info.image = img;
+        // Initiate answer with default values
+        task.steps = [0];
+        task.answer = {"img": task.info.url,
+                       "task_id": task.id,
+                       "isRelevant": "",
+					   "latlancoords": ""}
+    }
+    else {
+        deferred.resolve(task);
+    }
+});
+
+pybossa.presentTask(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        $('#photo-link').html('').append(task.info.image);
+        //$("#question").html(task.info.question);
+        $('#task-id').html(task.id);
+        $("#img_source").attr("href", task.info.uri);
+        $(".back").hide();
+
+        // Hide all steps first 
+        $(".steps").hide();
+        // Show first step
+        $("#step_0").show();
+        // Reset input fields
+        //$("#n_stories").val(0);
+
+        $('.btn-answer').off('click').on('click', function(evt) {
+            // Get value of pressed button
+            var tmp = $(evt.target).attr("value");
+			
+			// PAGINATION
+          
+			var pag_max_steps = $(".steps").length;
+			var pag_n_steps = $(".steps").index($(".steps:visible"));
+			var pag_perc=(((pag_n_steps+1)/(pag_max_steps-1))*100).toFixed(0);
+			$("#progress_bar_task").css("width",pag_perc+"%");
+			$("#progress_bar_task").html(pag_perc+"%");
+
+			// PAGINATION
+		  
+		  
+            // Check if step is 0
+            if ($(evt.target).hasClass('step_0')) {
+                task.answer.isRelevant = tmp;
+                $(".steps").hide();
+				
+                if (tmp == "No") {
+                    task.steps.push(1);
+					
+                    $("#step_1").show();
+					
+                    $(".back").show();
+					
+					init_map();
+                    }
+                else {
+                    $("#last_step").show();
+                }
+            } 
+             // Check if step is 1
+            if ($(evt.target).hasClass('step_1')) {
+				   if (tmp == "Yes") {
+					task.answer.latlancoords = $("#coords").html();
+					$(".steps").hide();
+					 $(".back").hide();
+				   $("#last_step").show();    
+			     }
+            }
+
+
+            // Check if step is last
+            if ($(evt.target).hasClass('last_step')) {
+                zoomout();
+                saveTask(task.id, task.answer).done(function() {
+                deferred.resolve();
+                })
+            }
+
+            // Check if back button is pressed
+            if ($(evt.target).hasClass('back')) {
+                console.log(JSON.stringify(task.steps));
+                zoomout();
+                $("#last_step").hide();
+                var last_step = task.steps.pop();
+                var id = "#step_" + last_step.toString();
+                var prev_id = "#step_" + task.steps[task.steps.length - 1];
+                $(id).hide();
+                $(prev_id).show();
+                if (prev_id == "#step_0") {
+                    $(".back").hide();
+                    task.steps = [0];
+                }
+
+
+                console.log(JSON.stringify(task.steps));
+            }
+            // print answer on console
+             console.log(JSON.stringify(task.answer));
+        });
+
+
+        $("#loading").hide();
+    }
+    else {
+        $(".skeleton").hide();
+        $("#loading").hide();
+        $("#finish").fadeIn(500);
+    }
+});
+
+
+//+FC UNOSAT WORKFLOW MODIFICATION
+make_run('geotag_yemen','geotag_yemen');
+//-FC UNOSAT WORKFLOW MODIFICATION
+
+</script>
