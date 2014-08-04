@@ -1,0 +1,1178 @@
+<style>
+    .steps {
+        display: none;
+    }
+</style>
+<script>
+/* Start of Help Popup Modular Script*/
+$( document ).ready(function() {
+
+	$("*[data-toggle=tooltip]").tooltip();
+
+	$(".help_popup_a").click(function(event){
+		event.preventDefault();
+		$(".help_popup_description",$(this).parent()).toggle();
+		if($(".help_popup_description",$(this).parent()).css("display")=="block") {
+			$(this).html("Hide the help!");
+		} else
+			$(this).html("Get some help");
+	});
+
+});
+/* End of Help Popup Modular Script*/
+</script>
+<div class="row skeleton"> 
+    <div id="area0" class="col-xs-6">
+        <!-- Questionary -->
+		<!-- Step -1-->
+        <div id="step_relevant_filter" class="steps">
+            <h1>Is this photo spam?</h1>
+				<p>Sometimes, people collecting photos might accidentally send something not useful, like an advertisement.</p>
+				<p>If this photo is an advertisement or similar you should choose "Spam"</p>
+				<p>Selecting "Spam" will skip this photo</p>
+				<p>Selecting "Not Spam" or "I don't know" will allow you to go ahead with the analysis</p>
+				<p>If you are not sure, select "I don't know"</p>						
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_relevant_filter btn btn-danger btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-down"></i> Spam</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_relevant_filter btn btn-success btn-answer" value='No'><i class="fa fa-white fa-thumbs-up"></i> Not Spam</button>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+                <button class="step_relevant_filter btn btn-answer" value='NoPhoto'><i class="fa fa-white fa-exclamation"></i> No photo</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                <button class="step_relevant_filter btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step -1 -->
+        <!-- Step 0-->
+        <div id="step_0" class="steps">
+            <h1>Can you see any water in the photo?</h1>
+			<div class="row help_popup col-xs-12">
+			<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>In this question we are trying to identify photos in which there is water and therefore would be relevant to the application</p>
+					<p>If you can see water in this photo select “Yes”. Water includes smaller water bodies such as irrigation channels, open sewers, ponds, puddles of water, or pools of water accumulated in garbage like tyres and bits of plastic, along with large water bodies such as lakes, rivers, and flood waters.</p>
+					<p>In short, if you see a water body, big, small, or even just a puddle, click “Yes”.</p>	
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686A7B000005DC-545_634x396.jpg"><img style="width:400px;" src="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686A7B000005DC-545_634x396.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i>Reuters</p>
+						</div>
+						<div class="col-sm-4">
+							<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0434.JPG"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0434.JPG" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						</div>
+						<div class="col-sm-4">
+							<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0145.JPG"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0145.JPG" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						</div>
+					</div>
+					<hr>
+					<p>In this photo there is no water body, large or small, and so you should click "no"</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0074.JPG"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0074.JPG" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						</div>
+					</div>					
+				</div>
+			</div>
+			<p>&nbsp;</p>
+
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_0 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_0 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+                <button class="step_0 btn btn-answer" value='NoPhoto'><i class="fa fa-white fa-exclamation"></i> No photo</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                <!--<button class="step_0 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>-->
+				<button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value="Unknown"> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 0 -->
+
+        <!-- Step 1-->
+        <div id="step_1" class="steps">
+            <h1>Can you see small pools of water?</h1>
+		   <p>Small pools of water can include puddles, ponds, irrigation channels, ditches, and water accumulating in garbage</p>
+		   <p>
+			<div class="row help_popup col-xs-12">
+			<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>During and after the monsoon season, people living along the Yamuna suffer severely from mosquito-borne diseases such as dengue fever. Mosquitos lay their eggs in stagnant (non-moving) water bodies. Heavy rains and receding flood waters leave behind puddles of stagnant water, which, create perfect breeding grounds for mosquitos . With this question we are trying to find areas that are at a high risk of dengue fever due to the presence of these stagnant water bodies.</p>
+					<p>You should be looking for any water that is not moving or not regularly flushed out. This includes small irrigation channels, puddles, ponds, and water accumulating in open drains (nullahs), ditches or garbage like old tyres, plastics or soft drink cans. </p>
+					<p>Here are some examples for which you should click “Yes”</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/Aashiya_fields4.jpg"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/Aashiya_fields4.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						</div>
+						<div class="col-sm-4">
+							<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0434.JPG"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0434.JPG" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						</div>
+					</div>
+					<hr>
+					<p>Here are some examples for which you should click "no"</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686923000005DC-857_634x398.jpg"><img style="width:400px;" src="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686923000005DC-857_634x398.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i>Parveen Negl</p>
+						</div>
+						<div class="col-sm-4">
+							<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686A2F000005DC-94_634x409.jpg"><img style="width:400px;" src="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686A2F000005DC-94_634x409.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i>K. Asif</p>
+						</div>
+					</div>
+				</div></br>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_1 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_1 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value="Unknown"> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 1-->
+		
+        <!-- Step 2-->
+        <div id="step_2" class="steps">
+            <h1>Are these small pools of water near human shelters or a settlement?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i> Need help with the question? <a href="javascript:void(0)">Click here!</a>
+				<div class="help_popup_description col-xs-12">
+					<p>If you see one or more buildings or tents in the photo, click "yes"<p>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_2 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_2 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value="Unknown"> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 2-->
+
+        <!-- Step 3-->
+        <div id="step_3" class="steps">
+            <h1>Can you see a large body of water?</h1>
+		   <p>Large water bodies can include rivers, lakes, large ponds, and flood waters</p>
+				<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>The aim of this analysis is to extract information relevant to monsoonal flooding. To do this we need to know where the flooding is occurring.</p>
+					<p>Click “yes” if you can see a large water body in the photo, like a river or a lake.</p>
+					<p>You should also click “yes” if you see flood waters. If you are not sure what flood waters look like, have a look at some of the examples below:</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686923000005DC-857_634x398.jpg"><img style="width:400px;" src="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686923000005DC-857_634x398.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i>Parveen Negl</p>
+						</div>
+						<div class="col-sm-4">
+							<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686A2F000005DC-94_634x409.jpg"><img style="width:400px;" src="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686A2F000005DC-94_634x409.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i>K. Asif</p>
+						</div>
+					</div>
+					</div>
+				</div>
+				<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_3 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_3 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value="Unknown"> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 3-->
+
+        <!-- Step 4-->
+        <div id="step_4" class="steps">
+            <h1>Can you see any signs of fast moving water? Check all that apply</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>Fast moving flood waters are dangerous. They can wash away people and property and make crossing the river near impossible.</p>
+					<p>Fast moving water can be identified by the following indicators:<ul><li>White peaks in the water and rough surface – fast moving water can form waves on the surface, which are indicated by the white peaks and rough, choppy water surface.</li><li>Water swirling around objects – As fast moving water hits objects in its path such as buildings, trees, poles, and vehicles, it will rise up around them.</li></p>
+					<p>Here are some examples of when you should select "yes" and "no"</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686B8C000005DC-570_634x409.jpg"><img style="width:400px;" src="http://i.dailymail.co.uk/i/pix/2013/06/19/article-2344673-1A686B8C000005DC-570_634x409.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i>Parveen Negl</p>
+							<p>In this image the water surface is rough, and swirling around objects in its path, you should select both rough water and water rising up around objects</p>
+						</div>
+						<div class="col-sm-4">
+							<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2013/06/23/article-2346961-1A789CF3000005DC-998_964x641.jpg"><img style="width:400px;" src="http://i.dailymail.co.uk/i/pix/2013/06/23/article-2346961-1A789CF3000005DC-998_964x641.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i>Daily Mail</p>
+							<p>In this picture, the rough surface is most likely caused by all of the people wading in the water. You should not select either of the options for this photo</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+              <input type="checkbox" value="Peaks">&nbsp;&nbsp;White peaks in the water<br>
+				<input type="checkbox" value="Rough">&nbsp;&nbsp;Rough water surface<br>
+				<input type="checkbox" value="Swirling">&nbsp;&nbsp;Water swirling around objects in the water<br>
+				<input type="checkbox" value="None">&nbsp;&nbsp;None of the above<br>
+				<input type="checkbox" value=“Unknown”>&nbsp;&nbsp;I don’t know<br>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+				<button class="step_4 btn btn-answer btn-success" value='Next'><i class="fa fa-white fa-thumbs-up"></i>Save my answers</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 4 -->		
+
+        <!-- Step 5-->
+        <div id="step_5" class="steps">
+            <h1>Can you see any of the following flood protection measures? Check all that apply</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>In this question you are looking for signs that protective measures have been put up against the floods. This can include temporary measures like sandbags (<a target="_blank" href="http://en.wikipedia.org/wiki/Sandbags">what are sandbags?</a>), or makeshift barriers, and permanent measures like embankments. An embankment is a man-made hill running along the river bank that raises the level of the river bank and so stops water from flooding surrounding areas when it rises. An embankment could be made from a variety of materials including concrete and soil (<a target="_blank" href="http://en.wikipedia.org/wiki/Levee">what is an embankment?</a>). See the photos below for examples of different flood protection measures.</p>
+					<p>Here are some examples of different types of flood protection measures.</p>
+					
+					<div>
+						<p>Embankment</p>
+						<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2013/06/23/article-2346961-1A789CE6000005DC-706_964x641.jpg"><img style="width:300px;" src="http://i.dailymail.co.uk/i/pix/2013/06/23/article-2346961-1A789CE6000005DC-706_964x641.jpg"></img></a>
+						<p style="font-size:10px;"> <a href="http://www.dailymail.co.uk/indiahome/article-2346961/Why-floods-missed-Delhi-How-embankments-Yamuna-protected-Capital-river-swelled-bursting-point.html">Mail Online India</a></p>
+						
+					</div>
+					<div>
+						<p>Sandbags</p>
+						<a target="_blank" href="http://www.nmdirtbags.com/images/sandbags_door3.jpg"><img style="width:300px;" src="http://www.nmdirtbags.com/images/sandbags_door3.jpg"></img></a>
+						<p style="font-size:10px;"> <a href="http://www.nmdirtbags.com/flood.html">New Mexico Dirtbags</a></p>
+						
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+              <input type="checkbox" value="Sandbags">&nbsp;&nbsp;Sandbags<br>
+				<input type="checkbox" value="Barriers">&nbsp;&nbsp;Makeshift barriers<br>
+				<input type="checkbox" value="Embankments">&nbsp;&nbsp;Embankments<br>
+				<input type="checkbox" value="Other">&nbsp;&nbsp;Other<br>
+				<input type="checkbox" value="None">&nbsp;&nbsp;None of the above<br>
+				<input type="checkbox" value=“Unknown”>&nbsp;&nbsp;I don’t know<br>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+				<button class="step_5 btn btn-answer btn-success" value='Next'><i class="fa fa-white fa-thumbs-up"></i>Save my answers</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+             
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 5 -->	
+		
+        <!-- Step 6-->
+        <div id="step_6" class="steps">
+            <h1>What is the colour of the water?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p><strong>Light brown:</strong>Flood waters carry a lot of sediment that is collected as the water runs over the landscape therefore light brown water can be a sign of flood water, or of high rainfall input into the rivers.</p>
+					<div class="col-sm-4">
+						<a target="_blank" href="http://static.indianexpress.com/pic/uploadedImages/bigImages/B_Id_395242_boat.jpg"><img style="width:400px;" src="http://static.indianexpress.com/pic/uploadedImages/bigImages/B_Id_395242_boat.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i>Indian Express</p>
+					</div>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<hr>
+					<p><strong>Dark brown:</strong>Here is a photo of dark brown, stagnant water</p>
+					<div class="col-sm-4">
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/_DSC1112.jpg"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/_DSC1112.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+					</div>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<hr>
+					<p><strong>Green water:</strong>Green water is highly eutrophic (carrying a lot of nutrients and being starved of oxygen). The high levels of nutrients cause blooms of algae to grow in the water and are a sign of pollution. The algae starve the river of oxygen causing other species to die off. In some areas of the Yamuna oxygen levels are nearly at 0.</p>
+					<div class="col-sm-4">
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/Farhana%20young%20girl.jpg"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/Farhana%20young%20girl.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+					</div>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<hr>
+					<p><strong>Clear water:</strong>Clear water is a sign of healthy water</p>
+					<div class="col-sm-4">
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/clear%20yamuna%20water%20upstream%20Wazirabad%20barrage.jpg"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/clear%20yamuna%20water%20upstream%20Wazirabad%20barrage.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+					</div>
+
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_6 btn btn-success btn-answer" value='Yes'>Light brown</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_6 btn btn-success btn-answer" value='No'>Dark brown</button>
+				<button class="step_6 btn btn-success btn-answer" value='Yes'>Green</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_6 btn btn-success btn-answer" value='No'></i>Clear</button>
+                <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value="Unknown"> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 6-->
+
+        <!-- Step 7-->
+        <div id="step_7" class="steps">
+            <h1>Can you see any of the following indicators of ^water pollution? Check all that apply</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>In this question we are looking for signs of water pollution.</p>
+					<p>Below are some examples of what you should be looking for:</p>
+
+					<div class="col-sm-4">
+						<p><strong>Rubbish floating in the water:</strong></p>
+						<a target="_blank" href="http://i.dailymail.co.uk/i/pix/2012/11/09/article-2230691-15F18928000005DC-98_468x286.jpg"><img style="width:400px;" src="http://i.dailymail.co.uk/i/pix/2012/11/09/article-2230691-15F18928000005DC-98_468x286.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.dailymail.co.uk/indiahome/indianews/article-2230691/Supreme-Court-told-river-Yamuna-resembles-drain.html">Mail Online India</a></p>
+					</div>
+					
+					<div class="col-sm-4">
+						<p><strong>Piles of dumped household or industrial waste:</strong></p>
+						<a target="_blank" href="http://kaw.stb.s-msn.com/i/E1/5FF19C86DE372472E8591E580A983.jpg"><img style="width:400px;" src="http://kaw.stb.s-msn.com/i/E1/5FF19C86DE372472E8591E580A983.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://green.in.msn.com/greenliving/article.aspx?cp-documentid=4784816&page=2">MSN Green Living</a></p>
+					</div>
+					
+					<div class="col-sm-4">
+						<p><strong>Open sewer (nullah):</strong></p>
+						<a target="_blank" href="http://www.indiaenvironmentportal.org.in/files/sanitation.jpg"><img style="width:400px;" src="http://www.indiaenvironmentportal.org.in/files/sanitation.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.indiaenvironmentportal.org.in/content/321126/the-economic-impacts-of-inadequate-sanitation-in-india/">India Environment Portal</a></p>
+					</div>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					
+					<div class="col-sm-4">
+						<p><strong>Chemical foam:</strong></p>
+						<a target="_blank" href="http://si.wsj.net/public/resources/images/OB-VP950_1210ai_J_20121210015029.jpg"><img style="width:400px;" src="http://si.wsj.net/public/resources/images/OB-VP950_1210ai_J_20121210015029.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://online.wsj.com/news/articles/SB10001424127887324024004578170241769795594">Andrew Caballero-Reynolds/Agence France-Presse/Getty Images</a></p>
+					</div>
+					
+					<div class="col-sm-4">
+						<p><strong>Plastic bags:</strong></p>
+						<a target="_blank" href="http://www.tribuneindia.com/2012/20121029/del1.jpg "><img style="width:400px;" src="http://www.tribuneindia.com/2012/20121029/del1.jpg " class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.tribuneindia.com/2012/20121029/delhi.htm">The Tribune</a></p>
+					</div>
+					
+					<div class="col-sm-4">
+						<p><strong>Plastic rubbish:</strong></p>
+						<a target="_blank" href="http://1.bp.blogspot.com/_uzdS2LQ2qvM/S4iXPIvyZuI/AAAAAAAAAKI/ocSLNBEXsnw/s320/NDSKA_34221f%5B1%5D.jpg"><img style="width:400px;" src="http://1.bp.blogspot.com/_uzdS2LQ2qvM/S4iXPIvyZuI/AAAAAAAAAKI/ocSLNBEXsnw/s320/NDSKA_34221f%5B1%5D.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamunajiyeabhiyaan.blogspot.ch/2010_02_01_archive.html">The Hindu</a></p>
+					</div>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					
+					<div class="col-sm-4">
+						<p><strong>Human or animal faeces:</strong></p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/example%20green%20stagnant%20eutrophic%20with%20organic%20matter-%20faeces%20pollution.JPG"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/example%20green%20stagnant%20eutrophic%20with%20organic%20matter-%20faeces%20pollution.JPG" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+					</div>
+					
+					<div class="col-sm-4">
+						<p><strong>Dead fish:</strong></p>
+						<a target="_blank" href="http://imgs.ntd.tv/content/20090916-AB-11-Thousands%20of%20Fish%20Dying%20in%20Indias%20Polluted%20Yamuna%20River.jpg "><img style="width:400px;" src="http://imgs.ntd.tv/content/20090916-AB-11-Thousands%20of%20Fish%20Dying%20in%20Indias%20Polluted%20Yamuna%20River.jpg " class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.ntd.tv/en/news/world/asia-pacific/20090916/48328-thousands-of-fish-dying-in-indias-yamuna-river.html">NTD.TV</a></p>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+              <input type="checkbox" value="Rubbish">&nbsp;&nbsp;Rubbish floating in the water<br>
+				<input type="checkbox" value="Waste">&nbsp;&nbsp;Piles of dumped household or industrial waste <br>
+				<input type="checkbox" value="Sewer">&nbsp;&nbsp;Open sewer (nullah)<br>
+				<input type="checkbox" value="Foam">&nbsp;&nbsp;Chemical foam<br>
+				<input type="checkbox" value="Bags">&nbsp;&nbsp;Plastic bags<br>
+				<input type="checkbox" value="Plastic">&nbsp;&nbsp;Plastic rubbish<br>
+				<input type="checkbox" value="Remains">&nbsp;&nbsp;Human remains<br>
+				<input type="checkbox" value="Faeces">&nbsp;&nbsp;Human or animal faeces <br>
+				<input type="checkbox" value="Fish">&nbsp;&nbsp;Dead fish<br>
+				<input type="checkbox" value="Birds">&nbsp;&nbsp;Dead birds<br>
+				<input type="checkbox" value="None">&nbsp;&nbsp;None of the above<br>
+				<input type="checkbox" value=“Unknown”>&nbsp;&nbsp;I don’t know<br>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+				<button class="step_7 btn btn-answer btn-success" value='Next'><i class="fa fa-white fa-thumbs-up"></i>Save my answers</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+             
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 7 -->	
+
+        <!-- Step 8-->
+        <div id="step_8" class="steps">
+            <h1>Can you see any of the following items in or near the waters? Check all that apply</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>Here we are looking for signs that people have lost their belongings and property to the flood waters. Losing a vehicle and/or household items can impact a person’s livelihood.</p>
+					<p>We are also looking for potential dangers in the flood waters. Vehicles and other items in the water can pose a hazard to people trying to move around in the area, powerlines can be particularly dangerous if the power is not cut to the area</p>
+					
+					<p>In these photos you can see some examples of the different items you should be looking for:</p>
+					
+					<div>
+						<p>Vehicules: Look for any sort of motorised vehicule, including buses, trucks, cars, motorbikes etc, NOT including boats</p>
+						<a target="_blank" href="http://www.thehindu.com/multimedia/dynamic/01492/DE20_PG4_4-COL_YAM_1492245f.jpg"><img style="width:300px;" src="http://www.thehindu.com/multimedia/dynamic/01492/DE20_PG4_4-COL_YAM_1492245f.jpg"></img></a>
+						<p style="font-size:10px;"> <a href="http://www.thehindu.com/news/national/other-states/unprecedented-flood-discharge-in-yamuna-water-levels-rise-in-dams/article4831253.ece">Mail Online India</a></p>
+						
+					</div>
+					<div>
+						<p>Cycle Rickshaws</p>
+						<a target="_blank" href="http://upload.wikimedia.org/wikipedia/commons/6/67/Old_Delhi_rickshaw_2011.JPG"><img style="width:300px;" src="http://upload.wikimedia.org/wikipedia/commons/6/67/Old_Delhi_rickshaw_2011.JPG"></img></a>
+						<p style="font-size:10px;"> <a href="http://commons.wikimedia.org/wiki/User:Sfu">Marcin Bialek</a></p>
+						
+					</div>
+					<div>	
+						<p>Powerlines</p>
+						<a target="_blank" href="http://www.thehindu.com/multimedia/dynamic/00263/SAKI_263797f.jpg"><img style="width:300px;" src="http://www.thehindu.com/multimedia/dynamic/00263/SAKI_263797f.jpg"></img></a>
+						<p style="font-size:10px;"> <a href="http://www.thehindu.com/news/cities/Delhi/now-a-clear-sky-at-karol-bagh-paharganj/article814783.ece">Sushil Kumar Verma</a></p>
+						
+					</div>
+					<div>	
+						<p>Bicycles</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0077.JPG"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0077.JPG"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>	
+						<p>Household utensils, furniture etc</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0075.JPG"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0075.JPG"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>
+						<p>Plastic containers and similar: Look for plastic buckets and other types of plastic containers used by the community.</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/_DSC1135.jpg"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/_DSC1135.jpg"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+              <input type="checkbox" value="Vehicles">&nbsp;&nbsp;Vehicles (cars, motorbikes, buses etc)<br>
+				<input type="checkbox" value="Rickshaw">&nbsp;&nbsp;Cycle rickshaw<br>
+				<input type="checkbox" value="Bicycles">&nbsp;&nbsp;Bicycles<br>
+				<input type="checkbox" value="Powerlines">&nbsp;&nbsp;Powerlines<br>
+				<input type="checkbox"  value="Household">&nbsp;&nbsp;Household items (utensils for cooking, furniture, etc)<br>
+				<input type="checkbox" value="Plastics">&nbsp;&nbsp;Plastics<br>
+				<input type="checkbox" value="Other">&nbsp;&nbsp;Other<br>
+				<input type="checkbox" value="None">&nbsp;&nbsp;I don’t know<br>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+				<button class="step_8 btn btn-answer btn-success" value='Next'><i class="fa fa-white fa-thumbs-up"></i>Save my answers</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 8 -->
+
+        <!-- Step 9-->
+        <div id="step_9" class="steps">
+            <h1>Can you see sources of drinking water?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>In a disaster situation it is important to get an understanding of the population’s access to clean drinking water. Here we are looking for access to any equipment or source of clean water, including water pipes and access taps, and water tankers.</p>
+					<p>Water pumps are not included here because they can be contaminated by polluted river water.</p>
+					<p>In these photos you can see some examples of the different items you should be looking for:</p>
+					
+					<div>
+						<p>Water tankers</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0145.JPG"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0145.JPG"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>
+						<p>Water pipes and access taps</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/socialmedicon.jpg"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/socialmedicon.jpg"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>						
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_9 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_9 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <button class="step_9 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 9-->
+
+        <!-- Step 10-->
+        <div id="step_10" class="steps">
+            <h1>Which sources of drinking water can you see? Check all that apply</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>In a disaster situation it is important to get an understanding of the population’s access to clean drinking water. Here we are looking for access to any equipment or source of clean water, including water pipes and access taps, and water tankers.</p>
+					<p>Water pumps are not included here because they can be contaminated by polluted river water.</p>
+					<p>In these photos you can see some examples of the different items you should be looking for:</p>
+					
+					<div>
+						<p>Water tankers</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0145.JPG"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0145.JPG"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>
+						<p>Water pipes and access taps</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/socialmedicon.jpg"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/socialmedicon.jpg"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>						
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+				<input type="checkbox" value="Pipes">&nbsp;&nbsp;Water pipes and access taps<br>
+				<input type="checkbox" value="Tankers">&nbsp;&nbsp;Water tankers<br>
+				<input type="checkbox" value="Other">&nbsp;&nbsp;I don’t know<br>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+				<button class="step_10 btn btn-answer btn-success" value='Next'><i class="fa fa-white fa-thumbs-up"></i>Save my answers</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 10 -->	
+
+        <!-- Step 11-->
+        <div id="step_11" class="steps">
+            <h1>Have they been affected by the flood waters?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>Look for signs that the water source has been damaged or in some way affected by the flood waters.</p>
+					<p>For instance are they no longer accessible because of the flood waters or associated debris? Have they been damaged in some way?</p>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+		
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_11 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_11 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <button class="step_11 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 11-->
+
+        <!-- Step 12-->
+        <div id="step_12" class="steps">
+            <h1>Can you see people in the photo?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>We are interested to know who is in the photos, are they men, women, children, babies? And what are they doing? Are they leaving the affected area with their belongings? Are they performing every day activities like working, washing, cooking etc.</p>
+					
+					<p>If you can see one or more people in the photo you should click "yes".</p>					
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_12 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_12 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value="Unknown"> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 12-->
+
+        <!-- Step 13-->
+        <div id="step_13" class="steps">
+            <h1>Are they...</h1>
+			<p>Check all that apply</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+              <input type="checkbox" value="Men">&nbsp;&nbsp;Men?<br>
+				<input type="checkbox" value="Women">&nbsp;&nbsp;Women?<br>
+				<input type="checkbox" value="Children">&nbsp;&nbsp;Children?<br>
+				<input type="checkbox" value="Babies">&nbsp;&nbsp;Babies?<br>
+				<input type="checkbox" value="Unknown">&nbsp;&nbsp;I don't know<br>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+				<button class="step_13 btn btn-answer btn-success" value='Next'><i class="fa fa-white fa-thumbs-up"></i>Save my answers</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 13 -->
+
+        <!-- Step 14-->
+        <div id="step_14" class="steps">
+            <h1>What are they doing?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>We are interested to know who is in the photos, are they men, women, children, babies? And what are they doing? Are they leaving the affected area with their belongings? Are they performing every day activities like working, washing, cooking etc.</p>
+					
+					<p>Here are a few examples of the different activities:</p>					
+					<div>
+						<p>Cooking</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0075.JPG"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0075.JPG"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+					</div>
+					<div>	
+						<p>Washing, collecting water from a pump</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/_DSC1135.jpg"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/_DSC1135.jpg"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>
+						<p>Washing clothes</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0222.JPG"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0222.JPG"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>	
+						<p>Collecting water from the river</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/Farhana%20young%20girl.jpg"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/Farhana%20young%20girl.jpg"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>	
+						<p>In and around dwellings</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0434.JPG"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0434.JPG"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>
+						<p>Working in fields</p>
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0074.JPG"><img style="width:300px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0074.JPG"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						
+					</div>
+					<div>	
+						<p>Travelling: including walking, by boat, by bike, car etc</p>
+						<a target="_blank" href="http://www.thehindu.com/multimedia/dynamic/00179/Yamuna_179508g.jpg"><img style="width:300px;" src="http://www.thehindu.com/multimedia/dynamic/00179/Yamuna_179508g.jpg"></img></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.thehindu.com/news/national/parts-of-delhi-flooded-as-yamuna-flows-above-danger-mark/article627018.ece">Sushil Kumar Verma</a></p>						
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+              <input type="checkbox" value="Working">&nbsp;&nbsp;Working in fields<br>
+				<input type="checkbox" value="Dwellings">&nbsp;&nbsp;Around dwellings<br>
+				<input type="checkbox" value="Religious">&nbsp;&nbsp;Performing religious activities<br>
+				<input type="checkbox" value="Cooking">&nbsp;&nbsp;Cooking<br>
+				<input type="checkbox" value="Travelling">&nbsp;&nbsp;Travelling<br>
+				<input type="checkbox" value="RiverWater">&nbsp;&nbsp;Collecting water from river<br>
+				<input type="checkbox" value="PumpWater">&nbsp;&nbsp;Collecting water from a water pump or similar<br>
+				<input type="checkbox" value="Washing">&nbsp;&nbsp;Washing themselves<br>
+				<input type="checkbox" value="WashingClothes">&nbsp;&nbsp;Washing clothing or equipment<br>
+				<input type="checkbox" value="Standing">&nbsp;&nbsp;Standing around, watching<br>
+				<input type="checkbox" value="Other">&nbsp;&nbsp;Other<br>
+				<input type="checkbox" nvalue="None">&nbsp;&nbsp;I don’t know<br>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+				<button class="step_14 btn btn-answer btn-success" value='Next'><i class="fa fa-white fa-thumbs-up"></i>Save my answers</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+         
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 14 -->
+		
+        <!-- Last Stepp -->
+        <div id="last_step" class="steps">
+            <h1>Thanks! You have fully analyzed one picture</h1>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="last_step btn btn-answer btn-large btn-success" value='Submit'>Save it and load another one</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Last Step-->
+		
+        <!-- End questionary -->
+        <div style="margin-top:5px;">
+            <button class="back btn btn-answer" style="display:none;"><i class="fa fa-chevron-left"></i> Go to previous step</button>
+        </div>
+    </div>
+    <!--<div id="img-details" class="col-xs-4">-->
+        <!-- Collapse -->
+        <!--<div class="accordion" id="accordion2">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                       EXIF data 
+                    </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+                    <div id="exif" class="accordion-inner">
+                        This picture does not have any EXIF data.
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- End collapse -->
+        <!--</div>-->
+    <!-- +FC UNOSAT ZOOM MODIFICATION -->
+    <div id="area1" class="col-xs-6 affix-top">
+		<div class="row">
+			<div class="col-xs-12" id="photo-link">
+					<img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
+			</div>
+			<div class="col-xs-12" style="margin-top:10px;">
+					<a href="javascript:zoomin()" class="btn btn-primary">Zoom IN</a>
+					&nbsp;|&nbsp;
+					<a href="javascript:zoomout()"  class="btn btn-primary">Zoom OUT</a>
+					&nbsp;|&nbsp;
+					<a id="img_source" target="_blank" href="#"  class="btn btn-primary">View Photo Source</a>
+			</div>
+		</div>
+    </div>
+	<!-- -FC UNOSAT ZOOM MODIFICATION -->
+</div><!-- End of Skeleton Row -->
+
+<div class="row">
+    <!-- Success and Error Messages for the user --> 
+    <div class="col-xs-6 col-xs-offset-2" style="height:50px">
+        <div id="success" class="alert alert-success" style="display:none;">
+            <a class="close">×</a>
+            <strong>Well done!</strong> Your answer has been saved
+        </div>
+        <div id="loading" class="alert alert-info" style="display:none;">
+            <a class="close">×</a>
+            Loading next task...
+        </div>
+        <div id="taskcompleted" class="alert alert-info" style="display:none;">
+            <strong>The task has been completed!</strong> Thanks a lot!
+        </div>
+        <div id="finish" class="alert alert-success" style="display:none;">
+            <strong>Congratulations!</strong> You have participated in all available tasks!
+            <br/>
+            <div class="alert-actions">
+                <a class="btn small" href="/">Go back</a>
+                <a class="btn small" href="/app">or, Check other applications</a>
+            </div>
+        </div>
+        <div id="error" class="alert alert-error" style="display:none;">
+            <a class="close">×</a>
+            <strong>Error!</strong> Something went wrong, please contact the site administrators
+        </div>
+    </div> <!-- End Success and Error Messages for the user -->
+</div> <!-- End of Row -->
+<!-- +FC UNOSAT WORKFLOW/ZOOM MODIFICATION -->
+<script src="/static/js/pybossa/unosat.js"></script>
+<!-- -FC UNOSAT WORKFLOW/ZOOM MODIFICATION -->
+<script>
+
+function zoomin(){
+    $("#photo-link").addClass("zoomed");
+
+}
+
+function zoomout() {
+    $("#photo-link").removeClass("zoomed");
+    
+}
+pybossa.taskLoaded(function(task, deferred) {
+    if ( ! $.isEmptyObject(task) ) {
+        // load image from flickr
+        var img = $('<img />');
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+        img.attr('src', task.info.url);
+        img.attr('id', 'anno_' + task.id);
+        img.addClass('img-polaroid');
+        img.addClass('annotable');
+        task.info.image = img;
+        // Initiate answer with default values
+        task.steps = [0];
+        task.answer = {"img": task.info.url,
+                       "task_id": task.id,
+                       "water": "",
+                       "waterSmall": "",
+                       "waterSmallShelter": "",
+                       "waterLarge": "",
+					   "waterLargeFast": "",
+                       "waterLargeProtection": "",
+					   "waterColour": "",
+                       "waterPollution": "",
+					   "waterProperty": "",
+                       "waterDrinking": "",
+					   "waterDrinkingPumps": "",
+                       "waterDrinkingPumpsAffected": "",
+					   "waterPeople": "",
+                       "waterPeopleType": "",
+					   "waterPeopleActivities": ""}
+    }
+    else {
+        deferred.resolve(task);
+    }
+});
+
+pybossa.presentTask(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        $('#photo-link').html('').append(task.info.image);
+        //$("#question").html(task.info.question);
+        $('#task-id').html(task.id);
+        $("#img_source").attr("href", task.info.uri);
+        $(".back").hide();
+
+        // Hide all steps first 
+        $(".steps").hide();
+        // Show first step
+        $("#step_relevant_filter").show();
+        // Reset input fields
+        //$("#n_stories").val(0);
+
+        $('.btn-answer').off('click').on('click', function(evt) {
+            // Get value of pressed button
+            var tmp = $(evt.target).attr("value");
+          
+			// PAGINATION
+          
+			var pag_max_steps = $(".steps").length;
+			var pag_n_steps = $(".steps").index($(".steps:visible"));
+			var pag_perc=(((pag_n_steps+1)/(pag_max_steps-1))*100).toFixed(0);
+			$("#progress_bar_task").css("width",pag_perc+"%");
+			$("#progress_bar_task").html(pag_perc+"%");
+
+			// PAGINATION
+          
+			// Check if step is the photo filter
+            if ($(evt.target).hasClass('step_relevant_filter')) {
+                
+                $(".steps").hide();
+                if (tmp == "No") {
+                    //alert("DB: Yes");
+                    $("#step_0").show();
+                    
+                    }
+                else {
+                  //alert("DB: No ajax");
+                  /*$.ajax({
+						url: url + 'api/filter/' + taskid +'/no',
+						dataType: 'json'
+					});*/
+                 	$("#progress_bar_task").css("width","100%");
+					$("#progress_bar_task").html("100%");
+                    $("#last_step").show();
+                }
+            } 
+			
+            // Check if step is 0
+            if ($(evt.target).hasClass('step_0')) {
+                task.answer.water = tmp;
+                $(".steps").hide();
+                if (tmp == "Yes") {
+                    task.steps.push(1);
+                    $("#step_1").show();
+                    $(".back").show();
+                    }
+                else {
+                  	
+                    $("#last_step").show();
+                }
+            } 
+          
+          
+          
+          // Check if step is 1
+            if ($(evt.target).hasClass('step_1')) {
+                task.answer.waterSmall = tmp;
+                $(".steps").hide();
+                if (tmp == "Yes") {
+                    task.steps.push(2);
+                    $("#step_2").show();
+                }
+                else {
+                    task.steps.push(3);
+                    $("#step_3").show();
+                }
+            }
+
+            // Check if step is 2
+            if ($(evt.target).hasClass('step_2')) {
+                task.answer.waterSmallShelter = tmp;
+                $(".steps").hide();
+                task.steps.push(6);
+                $("#step_6").show();               
+            }
+
+			 // Check if step is 3
+            if ($(evt.target).hasClass('step_3')) {
+                task.answer.waterLarge = tmp;
+                $(".steps").hide();
+                task.steps.push(4);
+                $("#step_4").show();               
+            }
+
+			 // Check if step is 4
+            if ($(evt.target).hasClass('step_4')) {
+                if (tmp == "Next") {
+					/* START OF : multiple answer code */
+						var multiple_answer_1_value="";
+					   $( "#multiple_answer_1 input:checked" ).each(function( index ) {
+						  console.log( index + ": " + $( this ).text() );
+						  multiple_answer_1_value=multiple_answer_1_value+","+$(this).val();
+						});
+					task.answer.waterLargeFast = multiple_answer_1_value.substring(1);
+					/* END OF : multiple answer code  */
+					task.steps.push(5);
+					$(".steps").hide();
+					$("#step_5").show();
+			     }               
+            }
+			
+			 // Check if step is 5
+            if ($(evt.target).hasClass('step_5')) {
+                if (tmp == "Next") {
+					/* START OF : multiple answer code */
+						var multiple_answer_1_value="";
+					   $( "#multiple_answer_1 input:checked" ).each(function( index ) {
+						  console.log( index + ": " + $( this ).text() );
+						  multiple_answer_1_value=multiple_answer_1_value+","+$(this).val();
+						});
+					task.answer.waterLargeProtection = multiple_answer_1_value.substring(1);
+					/* END OF : multiple answer code  */
+					task.steps.push(6);
+					$(".steps").hide();
+					$("#step_6").show();
+			     }               
+            }
+			
+			 // Check if step is 6
+            if ($(evt.target).hasClass('step_6')) {
+                task.answer.waterColour = tmp;
+                $(".steps").hide();
+                task.steps.push(7);
+                $("#step_7").show();               
+            }
+			
+			 // Check if step is 7
+            if ($(evt.target).hasClass('step_7')) {
+                if (tmp == "Next") {
+					/* START OF : multiple answer code */
+						var multiple_answer_1_value="";
+					   $( "#multiple_answer_1 input:checked" ).each(function( index ) {
+						  console.log( index + ": " + $( this ).text() );
+						  multiple_answer_1_value=multiple_answer_1_value+","+$(this).val();
+						});
+					task.answer.waterPollution = multiple_answer_1_value.substring(1);
+					/* END OF : multiple answer code  */
+					task.steps.push(8);
+					$(".steps").hide();
+					$("#step_8").show();
+			     }              
+            }
+			
+			 // Check if step is 8
+            if ($(evt.target).hasClass('step_8')) {
+                if (tmp == "Next") {
+					/* START OF : multiple answer code */
+						var multiple_answer_1_value="";
+					   $( "#multiple_answer_1 input:checked" ).each(function( index ) {
+						  console.log( index + ": " + $( this ).text() );
+						  multiple_answer_1_value=multiple_answer_1_value+","+$(this).val();
+						});
+					task.answer.waterProperty = multiple_answer_1_value.substring(1);
+					/* END OF : multiple answer code  */
+					task.steps.push(9);
+					$(".steps").hide();
+					$("#step_9").show();
+			     }              
+            }
+
+           // Check if step is 9
+            if ($(evt.target).hasClass('step_9')) {
+                task.answer.waterDrinking = tmp;
+                $(".steps").hide();
+                if (tmp == "Yes") {
+                    task.steps.push(10);
+                    $("#step_10").show();
+                }
+                else {
+                    task.steps.push(12);
+                    $("#step_12").show();
+                }
+            }
+
+			// Check if step is 10
+            if ($(evt.target).hasClass('step_10')) {
+                if (tmp == "Next") {
+					/* START OF : multiple answer code */
+						var multiple_answer_1_value="";
+					   $( "#multiple_answer_1 input:checked" ).each(function( index ) {
+						  console.log( index + ": " + $( this ).text() );
+						  multiple_answer_1_value=multiple_answer_1_value+","+$(this).val();
+						});
+					task.answer.waterDrinkingPumps = multiple_answer_1_value.substring(1);
+					/* END OF : multiple answer code  */
+					task.steps.push(11);
+					$(".steps").hide();
+					$("#step_11").show();
+			     }
+            }
+			
+			// Check if step is 11
+            if ($(evt.target).hasClass('step_11')) {
+                task.answer.waterDrinkingPumpsAffected = tmp;
+                $(".steps").hide();
+                task.steps.push(12);
+                $("#step_12").show();
+            }
+
+			// Check if step is 12
+            if ($(evt.target).hasClass('step_12')) {
+                task.answer.waterPeople = tmp;
+                $(".steps").hide();
+                if (tmp == "Yes") {
+                    task.steps.push(13);
+                    $("#step_13").show();
+                }
+                else {
+                    $("#last_step").show();
+                }
+            }
+			
+			// Check if step is 13
+            if ($(evt.target).hasClass('step_13')) {
+                if (tmp == "Next") {
+					/* START OF : multiple answer code */
+						var multiple_answer_1_value="";
+					   $( "#multiple_answer_1 input:checked" ).each(function( index ) {
+						  console.log( index + ": " + $( this ).text() );
+						  multiple_answer_1_value=multiple_answer_1_value+","+$(this).val();
+						});
+					task.answer.waterPeopleType = multiple_answer_1_value.substring(1);
+					/* END OF : multiple answer code  */
+					task.steps.push(14);
+					$(".steps").hide();
+					$("#step_14").show();
+			     }
+            }			
+
+			// Check if step is 14
+            if ($(evt.target).hasClass('step_14')) {
+                if (tmp == "Next") {
+					/* START OF : multiple answer code */
+						var multiple_answer_1_value="";
+					   $( "#multiple_answer_1 input:checked" ).each(function( index ) {
+						  console.log( index + ": " + $( this ).text() );
+						  multiple_answer_1_value=multiple_answer_1_value+","+$(this).val();
+						});
+					task.answer.waterPeopleActivities = multiple_answer_1_value.substring(1);
+					/* END OF : multiple answer code  */
+					$(".steps").hide();
+					$("#last_step").show();
+			     }
+                
+            }			
+
+            // Check if step is last
+            if ($(evt.target).hasClass('last_step')) {
+                zoomout();
+                $(".help_popup_description").css("display","none");
+                $("input:checkbox").removeAttr("checked");
+                saveTask(task.id, task.answer).done(function() {
+                deferred.resolve();
+                  
+                })
+            }
+
+            // Check if back button is pressed
+            if ($(evt.target).hasClass('back')) {
+                console.log(JSON.stringify(task.steps));
+                zoomout();
+                $("#last_step").hide();
+                var last_step = task.steps.pop();
+                var id = "#step_" + last_step.toString();
+                var prev_id = "#step_" + task.steps[task.steps.length - 1];
+                $(id).hide();
+                $(prev_id).show();
+                if (prev_id == "#step_0") {
+                    $(".back").hide();
+                    task.steps = [0];
+                }
+
+                //if ((prev_id == "#step_9") || (prev_id == "#step_11") || (prev_id == '#step_14') || (prev_id == '#step_15')) {
+                //    anno.reset();
+                //    $("#crack_category").hide();
+                //    $("#crack_rebars").hide();
+                //    $("#crack_rebars").hide();
+                //    $("#damage_category").hide();
+                //    $("#answer").hide();
+                //}
+
+                console.log(JSON.stringify(task.steps));
+            }
+            // print answer on console
+            // console.log(JSON.stringify(task.answer));
+        });
+
+
+        //$("#btn-submit").html("<i class='fa-repeat'></i> I don't recognize any person, try next one");
+        //$("#btn-submit").removeClass("btn-success");
+        //if (!$.isEmptyObject(task.info.exif)) {
+        //    //var keys = Object.keys(task.info.exif);
+        //    //$("#exif").html("");
+        //    //for(i=0;i<keys.length;i++){
+        //    //$("#exif").append("<p><strong>" + keys[i] + "</strong>: " + task.info.exif[keys[i]] + "</p>");
+        //    //}
+        //    $("#exif").html(JSON.stringify(task.info.exif));
+        //}
+        //else {
+        //    $("#exif").html("There is no EXIF data in this picture.");
+        //}
+
+        //anno.makeAnnotatable(document.getElementById('anno_' + task.id));
+
+        //anno.addHandler('onAnnotationCreated', function(annotation) {
+        //    //console.log(annotation.text);
+        //    $("#btn-submit").html("<i class='fa fa-save'></i> Save current annotations");
+        //    $("#btn-submit").addClass("btn-success");
+        //});
+
+        //$('.btn-answer').off('click').on('click', function(evt) {
+        //    var answer = $(evt.target).attr("value");
+        //    if (typeof answer != 'undefined') {
+        //        //console.log(answer);
+        //        pybossa.saveTask(task.id, anno.getAnnotations()).done(function() {
+        //            deferred.resolve();
+        //        });
+        //        $("#loading").fadeIn(500);
+        //        if ($("#disqus_thread").is(":visible")) {
+        //            $('#disqus_thread').toggle();
+        //            $('.btn-disqus').toggle();
+        //        }
+        //    }
+        //    else {
+        //        $("#error").show();
+        //    }
+        //});
+        $("#loading").hide();
+    }
+    else {
+        $(".skeleton").hide();
+        $("#loading").hide();
+        $("#finish").fadeIn(500);
+    }
+});
+make_run('monsoon2013','monsoon2013');
+
+</script>
