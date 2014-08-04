@@ -1,0 +1,659 @@
+<style>
+    .steps {
+        display: none;
+    }
+</style>
+<script>
+/* Start of Help Popup Modular Script*/
+$( document ).ready(function() {
+$("*[data-toggle=tooltip]").tooltip();
+	$(".help_popup_a").click(function(event){
+		event.preventDefault();
+		$(".help_popup_description",$(this).parent()).toggle();
+		if($(".help_popup_description",$(this).parent()).css("display")=="block") {
+			$(this).html("Hide the help!");
+		} else
+			$(this).html("Get some help");
+	});
+});
+/* End of Help Popup Modular Script*/
+</script>
+<div class="row skeleton"> 
+    <div id="area0" class="col-xs-6">
+        <!-- Questionary -->
+		<!-- Step -1-->
+        <div id="step_relevant_filter" class="steps">
+            <h1>Is this photo spam?</h1>
+				<p>If this is an advertisement or similar select "No"</p>
+				<p>Selecting "Yes" will skip this photo</p>
+				<p>Selecting "No" or "I don't know" will allow you to go ahead with the analysis</p>
+				<p>If you are not sure, select "No" or "I don't know"</p>						
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_relevant_filter btn btn-danger btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_relevant_filter btn btn-success btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+                <button class="step_relevant_filter btn btn-answer" value='NoPhoto'><i class="fa fa-white fa-exclamation"></i> No photo</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                <button class="step_relevant_filter btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step -1 -->
+		
+        <!-- Step 0-->
+        <div id="step_0" class="steps">
+            <h1>Can you see animals in the photo?</h1>
+			
+			<div class="row help_popup col-xs-12">
+			<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>In this question we are just trying to identify photos in which there are animals and therefore would be relevant to the application.</p>
+					<p>If you can see an animal in this photo select “Yes”. Some of the animals you are likely to see in these photos include cows, cats, dogs, horses, elephants, buffalo, sheep, goats, pigs, chickens, and any other livestock.</p>
+					<p>You should also click "Yes" if the animal is dead and/or if you are looking at a skeleton</p>					
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0091.jpg"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0091.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						</div>
+						<div class="col-sm-4">
+							<a target="_blank" href="http://assets.nydailynews.com/polopoly_fs/1.1286386.1363114197%21/img/httpImage/image.jpg_gen/derivatives/landscape_635/pigs13n-2-web.jpg "><img style="width:400px;" src="http://assets.nydailynews.com/polopoly_fs/1.1286386.1363114197%21/img/httpImage/image.jpg_gen/derivatives/landscape_635/pigs13n-2-web.jpg " class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://ascendingstarseed.wordpress.com/2013/03/12/number-of-dead-pigs-flooding-shanghai-river-rises-to-nearly-6000/">Associated Press</a></p>
+						</div>
+					</div>
+					<p>Select "No" if you cannot see any animals, or if you can only see wild birds. This application does not apply to wild birds. For the photo below you should select "No":</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="http://im.rediff.com/news/2013/jun/19yamuna9.jpg"><img style="width:400px;" src="http://im.rediff.com/news/2013/jun/19yamuna9.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.rediff.com/news/slide-show/slide-show-1-photos-swollen-yamuna-leaves-15000-homeless-in-delhi/20130619.htm">IBN Live</a></p>
+						</div>
+					</div>					
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_0 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_0 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+				<button  data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?"  class="step_0 btn btn-answer" value='Unknown'></i> Don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 0 -->
+
+		<!-- Step 1-->
+        <div id="step_1" class="steps">
+            <h1>What is the animal you are looking at?</h1>
+			<p>Hint: search the internet to find pictures that will help you identify what you are seeing in the photo, you can use the links under each suggested species to start</p>
+            <p>
+            <a target="_blank" id="uri" class="btn" href=""><i class="fa fa-white fa-search"></i> Get more clues about the picture</a>
+            </p>
+			<div class="row help_popup col-xs-12">
+			<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>In this question we are asking you to identify the animal that you are looking at. Livestock are an important asset that provide food, transport, and labour as work animals in agriculture. Their loss through flooding or associated disease can significantly affect livelihoods and have a flow on effect on the local economy.</p>
+					<p>With this application we want to collect data on what types of animals are in the area and whether or not they were affected by the flooding. </p>
+					<h3>How can I work out what animal I am looking at?</h3>
+					<p>Identifying the species of animal you are looking at from just a photo can be difficult. However there are a lot of resources available on the internet to help you. In the application we have provided the most likely possibilities for the region in which you are working according to the animals most likely to be found in that area. Have a look at the different examples and compare them with the photo you are looking at. If one seems to match, click on the "Google" link under the thumbnail. This will take you to a google search for the animal, from where you can begin looking for more photos and information about it to confirm your identification.</p>
+					<p>If you think the animal you are looking at is not in the examples given, try looking for lists of livestock for the region or country you are working on. Under the "Other" box there should be a link to a document on the relevant agricultural sector, you can start your search from here.</p>
+					<p>When searching on the internet for more information, try keywords such as "agriculture", "livestock", the name of the country in which you are working. Look for the relevant country’s agricultural department (or similar), and work done by NGO's, or organisations like the Food and Agriculture Organisation (FAO). These organisations often have inventories or reports on the agricultural activities within a particular country.</p>
+					<p>Identifying an animal can often take some time, so don't get discouraged if you feel it is taking too long! And if you are stuck you can always click the "Unknown" button and move onto the next question.</p>
+					
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+				<p><strong>Livestock</strong></p>
+                <ul class="thumbnails">
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="https://dl.dropboxusercontent.com/u/46576246/India/DSCI0091.jpg">
+                            <p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+                            <button class="step_1 btn btn-answer" value='Cattle'>Cattle</button>
+                        </div>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.google.com/?gfe_rd=cr&ei=ET9FU6H_LOHW8gedzoH4BQ#q=cattle+india">Google search: Indian cattle</a></p>
+                    </li>
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://dilawars.files.wordpress.com/2012/04/water-buffalo.jpg">
+                            <p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="http://dilawars.wordpress.com/2012/04/29/d-d-kosambi-on-water-buffalo/">D. D. Kosambi</a></p>
+                            <button class="step_1 btn btn-answer" value='Buffalo'>Buffalo</button>							
+                        </div>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.google.com/?gfe_rd=cr&ei=oEBFU_abKOHW8gedzoH4BQ#q=water+buffalo+india">Google search: Indian buffalo</a></p>
+                    </li>
+					<li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="https://farm6.staticflickr.com/5100/5527299754_da7195bc13_m.jpg">
+                            <p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.flickr.com/photos/peraion/">Peraion</a></p>
+                            <button class="step_1 btn btn-answer" value='Goat'>Goat</button>							
+                        </div>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.google.com/?gfe_rd=cr&ei=b0FFU-T7J-HW8gedzoH4BQ#q=goat+india">Google search: Indian goat</a></p>
+                    </li>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/9/95/Ryabushki_chicken_01.jpg">
+                            <p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://commons.wikimedia.org/wiki/User:NVO">NVO</a></p>
+                            <button class="step_1 btn btn-answer" value='Poultry'>Poultry</button>
+                        </div>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.google.ch/?gfe_rd=cr&ei=0UFFU7-eOuHW8gedzoH4BQ#q=poultry+india">Google search: Indian poultry</a></p>
+					</li>
+					</ul>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<ul class="thumbnails">
+					<p><strong>Wildlife and Other</strong></p>					
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://m1.i.pbase.com/o2/32/780432/1/105444801.wKMBExcF.LJ4H3730.jpg">
+                            <p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.pbase.com/image/105444801">Jack Folkers</a></p>
+                            <button class="step_1 btn btn-answer" value='Pigs'>Wild Pigs</button>
+                        </div>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.google.com/?gfe_rd=cr&ei=FUNFU_efLeHW8gedzoH4BQ#q=wild+pigs+india">Google search: Indian wild pigs</a></p>
+                    </li>
+					
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://graphics8.nytimes.com/images/2012/08/07/world/asia/7-Dog-Lover-IndiaInk/7-Dog-Lover-IndiaInk-blog480.jpg">
+                            <p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://india.blogs.nytimes.com/2012/08/07/delhi-strays-thrive-on-affection-from-a-few/?_php=true&_type=blogs&_r=0">NY Times: Enrico Fabian</a></p>
+                            <button class="step_1 btn btn-answer" value='Dog'>Dog</button>
+                        </div>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.google.com/?gfe_rd=cr&ei=RURFU7SeCubW8gfYs4CwBQ#q=dogs+india">Google search: Dogs</a></p>
+                    </li>
+					<li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/India_Street_Cat.jpg/216px-India_Street_Cat.jpg">
+                            <p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://commons.wikimedia.org/wiki/File:India_Street_Cat.jpg">Vincent Paul</a></p>
+                            <button class="step_1 btn btn-answer" value='Cat'>Cat</button>
+                        </div>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.google.com/?gfe_rd=cr&ei=RURFU7SeCubW8gfYs4CwBQ#q=cat+animal">Google search: cat</a></p>
+                    </li>
+					<p>&nbsp;</p>
+					<li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="https://dl.dropboxusercontent.com/u/46576246/India/DSC_2088.JPG">
+                            <p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+                            <button class="step_1 btn btn-answer" value='Elephant'>Elephant</button>
+                        </div>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a target="_blank" href="https://www.google.com/?gfe_rd=cr&ei=5k1GU6jeJeHW8gfcwoCYBw#q=indian+elephant">Google search: Indian elephant</a></p>
+                    </li>
+					<li class="col-xs-4">
+						<div>
+							<p>
+							<span class="label label-info"><i class="fa fa-bullhorn"></i></span>Not in the list? Type your identification here. Try searching the web to identify what you are looking at.
+							</p>
+							<input id="animal_other" type="text" name="animal_other" onChange="$('#open_answer_1').attr('value',$(this).val())">
+							<br/>
+							<button class="button step_1 btn btn-answer" id="open_answer_1" value="">Done</button>
+						</div><!-- End of DIV for the submission buttons -->
+					</li>
+					<li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Vraagteken.svg/200px-Vraagteken.svg.png" style="width: 50%; height: 50%">
+                            <button   data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value='Unknown'>Unknown</button>
+                        </div>						
+                    </li>				
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					</div>
+                </ul>
+				<!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 1 -->
+		
+		
+        <!-- Step 2-->
+        <div id="step_2" class="steps">
+            <h1>Is the animal alive?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>In this question we want to identify any animals that have died. They may or may not have died as a result of the flooding or resulting diseases however if there are a lot of dead animals in a particular area this would be of interest. Significant numbers of dead livestock can have a negative effect on their owner’s livelihood, and a flow-on negative effect on the local economy.</p>
+					<p>Aside from the loss of livelihood associated with the loss of animals, carcases of animals lying in the streets or near water bodies can also be a threat to public health.</p>
+					<p>Click “no” if the animal you see in the photo is dead:</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="http://assets.nydailynews.com/polopoly_fs/1.1286386.1363114197%21/img/httpImage/image.jpg_gen/derivatives/landscape_635/pigs13n-2-web.jpg "><img style="width:400px;" src="http://assets.nydailynews.com/polopoly_fs/1.1286386.1363114197%21/img/httpImage/image.jpg_gen/derivatives/landscape_635/pigs13n-2-web.jpg " class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://ascendingstarseed.wordpress.com/2013/03/12/number-of-dead-pigs-flooding-shanghai-river-rises-to-nearly-6000/">Associated Press</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_2 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i>Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_2 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i>No</button>
+				<button   data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_2 btn btn-answer" value='Unknown'></i>Don't Know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 2 -->
+		
+		<!-- Step 3-->
+        <div id="step_3" class="steps">
+            <h1>Are they in or surrounded by water?</h1>
+			
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>Animals trapped by flood waters are at risk of injury, disease and/death.</p>					
+					<p>Click "Yes" if the animal is in or surrounded by water</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="http://www.deccanherald.com/photos/big/2013/06/19/20130619134323.gif "><img style="width:400px;" src="http://www.deccanherald.com/photos/big/2013/06/19/20130619134323.gif" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://archives.deccanchronicle.com/130621/news-current-affairs/article/uttarakhand-disaster-armed-forces-step-rescue-operations">Deccan Chronicle</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_3 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_3 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+				<button   data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_3 btn btn-answer" value='Unknown'> Don't Know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 3 -->
+
+		<!-- Step 4-->
+        <div id="step_4" class="steps">
+            <h1>Can you see an animal shelter?</h1>
+			
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>Animal shelters include stables, or simple structures consisting of only a roof, which could just be a tarpaulin stretched over sticks.</p>
+					<p>These temporary structures consisting of a tarpauline stretched over sticks are the most likely shelters that you will see. Animals may also often just be kept outside. </p>
+					<p>Here is an example of a typical tarpaulin animal shelter that you may see in the photos:</p>
+					<div class="row">
+					<div class="col-sm-4">
+						<a target="_blank" href="https://dl.dropboxusercontent.com/u/46576246/India/_DSC1180.jpg"><img style="width:400px;" src="https://dl.dropboxusercontent.com/u/46576246/India/_DSC1180.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://yamuna.womenforsustainablecities.org/">Yamuna's Daughters</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_4 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i>Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_4 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i>No</button>
+				<button   data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_4 btn btn-answer" value='Unknown'>Don't Know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 4 -->
+
+		<!-- Step 5-->
+        <div id="step_5" class="steps">
+            <h1>Is it flooded?</h1>
+			
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>Flood waters can damage or destroy animal shelters, if so they would have to be replaced, costing time and resources. </p>
+					<p>Standing water in the animal shelter can also be dangerous for the animals. Polluted, stagnant flood waters can carry diseases that can be deadly for the animals if they drink the water, or if they have open wounds. Standing in water for extended times can cause various problems on the animals feet and legs, leading to debilitating injury and / or death. </p>
+					<p>Look for damage to the shelter and water in and around the shelter, as in the following examples:</p>
+					<div class="row">
+					<div class="col-sm-4">
+						<a target="_blank" href="https://voiceselsalvador.files.wordpress.com/2011/10/flood-photo.jpg"><img style="width:400px;" src="https://voiceselsalvador.files.wordpress.com/2011/10/flood-photo.jpg" class="img-thumbnail"></a>
+						<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="https://voiceselsalvador.wordpress.com/2011/10/">Voices on the Border</a></p>
+					</div>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_5 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i>Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_5 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i>No</button>
+				<button   data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_5 btn btn-answer" value='Unknown'>Don't Know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 5 -->
+		
+        <!-- Last Stepp -->
+        <div id="last_step" class="steps">
+            <h1>Thanks! You have fully analyzed one picture</h1>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="last_step btn btn-answer btn-large btn-success" value='Submit'>Save it and load another one</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Last Step-->
+		
+        <!-- End questionary -->
+        <div style="margin-top:5px;">
+            <button class="back btn btn-answer" style="display:none;"><i class="fa fa-chevron-left"></i> Go to previous step</button>
+        </div>
+    </div>
+    <!--<div id="img-details" class="col-xs-4">-->
+        <!-- Collapse -->
+        <!--<div class="accordion" id="accordion2">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                       EXIF data 
+                    </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+                    <div id="exif" class="accordion-inner">
+                        This picture does not have any EXIF data.
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- End collapse -->
+        <!--</div>-->
+    <!-- +FC UNOSAT ZOOM MODIFICATION -->
+    <div id="area1" class="col-xs-6 affix-top">
+		<div class="row">
+			<div class="col-xs-12" id="photo-link">
+					<img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
+			</div>
+			<div class="col-xs-12" style="margin-top:10px;">
+					<a href="javascript:zoomin()" class="btn btn-primary">Zoom IN</a>
+					&nbsp;|&nbsp;
+					<a href="javascript:zoomout()"  class="btn btn-primary">Zoom OUT</a>
+					&nbsp;|&nbsp;
+					<a id="img_source" target="_blank" href="#"  class="btn btn-primary">View Photo Source</a>
+			</div>
+		</div>
+    </div>
+	<!-- -FC UNOSAT ZOOM MODIFICATION -->
+</div><!-- End of Skeleton Row -->
+
+<div class="row">
+    <!-- Success and Error Messages for the user --> 
+    <div class="col-xs-6 col-xs-offset-2" style="height:50px">
+        <div id="success" class="alert alert-success" style="display:none;">
+            <a class="close">×</a>
+            <strong>Well done!</strong> Your answer has been saved
+        </div>
+        <div id="loading" class="alert alert-info" style="display:none;">
+            <a class="close">×</a>
+            Loading next task...
+        </div>
+        <div id="taskcompleted" class="alert alert-info" style="display:none;">
+            <strong>The task has been completed!</strong> Thanks a lot!
+        </div>
+        <div id="finish" class="alert alert-success" style="display:none;">
+            <strong>Congratulations!</strong> You have participated in all available tasks!
+            <br/>
+            <div class="alert-actions">
+                <a class="btn small" href="/">Go back</a>
+                <a class="btn small" href="/app">or, Check other applications</a>
+            </div>
+        </div>
+        <div id="error" class="alert alert-error" style="display:none;">
+            <a class="close">×</a>
+            <strong>Error!</strong> Something went wrong, please contact the site administrators
+        </div>
+    </div> <!-- End Success and Error Messages for the user -->
+</div> <!-- End of Row -->
+
+<!-- +FC UNOSAT WORKFLOW/ZOOM MODIFICATION -->
+<script src="/static/js/pybossa/unosat.js"></script>
+<!-- -FC UNOSAT WORKFLOW/ZOOM MODIFICATION -->
+
+<script>
+
+function zoomin(){
+    $("#photo-link").addClass("zoomed");
+
+}
+
+function zoomout() {
+    $("#photo-link").removeClass("zoomed");
+    
+}
+pybossa.taskLoaded(function(task, deferred) {
+    if ( ! $.isEmptyObject(task) ) {
+        // load image from flickr
+        var img = $('<img />');
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+        img.attr('src', task.info.url);
+        img.attr('id', 'anno_' + task.id);
+        img.addClass('img-polaroid');
+        img.addClass('annotable');
+        task.info.image = img;
+        // Initiate answer with default values
+        task.steps = [0];
+        task.answer = {"img": task.info.url,
+                       "task_id": task.id,
+                       "animals": "",
+                       "animalsID": "",
+                       "animalsAlive": "",
+                       "animalsAliveTrapped": "",
+					   "animalsShelter": "",
+                       "animalsShelterFlooded": ""}
+    }
+    else {
+        deferred.resolve(task);
+    }
+});
+
+pybossa.presentTask(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        $('#photo-link').html('').append(task.info.image);
+        //$("#question").html(task.info.question);
+        $('#task-id').html(task.id);
+        $("#img_source").attr("href", task.info.uri);
+        $(".back").hide();
+
+		// Hide all steps first 
+        $(".steps").hide();
+        // Show first step
+        $("#step_relevant_filter").show();
+        // Reset input fields
+        //$("#n_stories").val(0);
+
+        $('.btn-answer').off('click').on('click', function(evt) {
+            // Get value of pressed button
+            var tmp = $(evt.target).attr("value");
+			
+			// PAGINATION
+          
+			var pag_max_steps = $(".steps").length;
+			var pag_n_steps = $(".steps").index($(".steps:visible"));
+			var pag_perc=(((pag_n_steps+1)/(pag_max_steps-1))*100).toFixed(0);
+			$("#progress_bar_task").css("width",pag_perc+"%");
+			$("#progress_bar_task").html(pag_perc+"%");
+
+			// PAGINATION
+          
+			// Check if step is the photo filter
+            if ($(evt.target).hasClass('step_relevant_filter')) {
+                
+                $(".steps").hide();
+                if (tmp == "No") {
+                    //alert("DB: Yes");
+                    $("#step_0").show();
+                    
+                    }
+                else {
+                  //alert("DB: No ajax");
+                  /*$.ajax({
+						url: url + 'api/filter/' + taskid +'/no',
+						dataType: 'json'
+					});*/
+                 	$("#progress_bar_task").css("width","100%");
+					$("#progress_bar_task").html("100%");
+                    $("#last_step").show();
+                }
+            } 
+          
+          
+            // Check if step is 0
+            if ($(evt.target).hasClass('step_0')) {
+                task.answer.animals = tmp;
+                $(".steps").hide();
+                if (tmp == "Yes") {
+                    task.steps.push(1);
+                    $("#step_1").show();
+                    $(".back").show();
+                    }
+                else {
+                    $("#last_step").show();
+                }
+            } 
+             // Check if step is 1
+            if ($(evt.target).hasClass('step_1')) {
+                task.answer.animalsID = tmp;
+                $(".steps").hide();
+                task.steps.push(2);
+                $("#step_2").show();
+            }
+
+            // Check if step is 2
+            if ($(evt.target).hasClass('step_2')) {
+                task.answer.animalsAlive = tmp;
+                $(".steps").hide();
+                if (tmp == "Yes") {
+                    task.steps.push(3);
+                    $("#step_3").show();
+                }
+                else {
+                    task.steps.push(4);
+                    $("#step_4").show();
+                }               
+            }
+
+			// Check if step is 3
+            if ($(evt.target).hasClass('step_3')) {
+                task.answer.animalsID = tmp;
+                $(".steps").hide();
+                task.steps.push(4);
+                $("#step_4").show();
+            }
+           // Check if step is 4
+            if ($(evt.target).hasClass('step_4')) {
+                // This steps gets the info from an input field
+                //var tmp = $("#n_stories").val();
+                task.answer.cropGreen = tmp;
+                $(".steps").hide();
+                if (tmp == "Yes") {
+                    task.steps.push(5);
+                    $("#step_5").show();
+                }
+                else {
+                    $("#last_step").show();
+                }
+            }
+			
+			// Check if step is 5
+            if ($(evt.target).hasClass('step_5')) {
+                task.answer.cropWilting = tmp;
+                $(".steps").hide();
+                $("#last_step").show();
+            }
+
+            // Check if step is last
+            if ($(evt.target).hasClass('last_step')) {
+                zoomout();
+              $(".help_popup_description").css("display","none");
+                $("input:checkbox").removeAttr("checked");
+               saveTask(task.id, task.answer).done(function() {
+                deferred.resolve();
+                })
+            }
+
+            // Check if back button is pressed
+            if ($(evt.target).hasClass('back')) {
+                console.log(JSON.stringify(task.steps));
+                zoomout();
+                $("#last_step").hide();
+                var last_step = task.steps.pop();
+                var id = "#step_" + last_step.toString();
+                var prev_id = "#step_" + task.steps[task.steps.length - 1];
+                $(id).hide();
+                $(prev_id).show();
+                if (prev_id == "#step_0") {
+                    $(".back").hide();
+                    task.steps = [0];
+                }
+
+                //if ((prev_id == "#step_9") || (prev_id == "#step_11") || (prev_id == '#step_14') || (prev_id == '#step_15')) {
+                //    anno.reset();
+                //    $("#crack_category").hide();
+                //    $("#crack_rebars").hide();
+                //    $("#crack_rebars").hide();
+                //    $("#damage_category").hide();
+                //    $("#answer").hide();
+                //}
+
+                console.log(JSON.stringify(task.steps));
+            }
+            // print answer on console
+            console.log(JSON.stringify(task.answer));
+        });
+
+
+        //$("#btn-submit").html("<i class='fa-repeat'></i> I don't recognize any person, try next one");
+        //$("#btn-submit").removeClass("btn-success");
+        //if (!$.isEmptyObject(task.info.exif)) {
+        //    //var keys = Object.keys(task.info.exif);
+        //    //$("#exif").html("");
+        //    //for(i=0;i<keys.length;i++){
+        //    //$("#exif").append("<p><strong>" + keys[i] + "</strong>: " + task.info.exif[keys[i]] + "</p>");
+        //    //}
+        //    $("#exif").html(JSON.stringify(task.info.exif));
+        //}
+        //else {
+        //    $("#exif").html("There is no EXIF data in this picture.");
+        //}
+
+        //anno.makeAnnotatable(document.getElementById('anno_' + task.id));
+
+        //anno.addHandler('onAnnotationCreated', function(annotation) {
+        //    //console.log(annotation.text);
+        //    $("#btn-submit").html("<i class='fa fa-save'></i> Save current annotations");
+        //    $("#btn-submit").addClass("btn-success");
+        //});
+
+        //$('.btn-answer').off('click').on('click', function(evt) {
+        //    var answer = $(evt.target).attr("value");
+        //    if (typeof answer != 'undefined') {
+        //        //console.log(answer);
+        //        pybossa.saveTask(task.id, anno.getAnnotations()).done(function() {
+        //            deferred.resolve();
+        //        });
+        //        $("#loading").fadeIn(500);
+        //        if ($("#disqus_thread").is(":visible")) {
+        //            $('#disqus_thread').toggle();
+        //            $('.btn-disqus').toggle();
+        //        }
+        //    }
+        //    else {
+        //        $("#error").show();
+        //    }
+        //});
+        $("#loading").hide();
+    }
+    else {
+        $(".skeleton").hide();
+        $("#loading").hide();
+        $("#finish").fadeIn(500);
+    }
+});
+  
+//+FC UNOSAT WORKFLOW MODIFICATION
+make_run('animal2013','animal2013');
+//-FC UNOSAT WORKFLOW MODIFICATION
+
+</script>
