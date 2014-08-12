@@ -1,0 +1,855 @@
+<style>
+    .steps {
+        display: none;
+    }
+</style>
+<script>
+/* Start of Help Popup Modular Script*/
+$( document ).ready(function() {
+	
+	$("*[data-toggle=tooltip]").tooltip();
+	
+	$(".help_popup_a").click(function(event){
+		event.preventDefault();
+		$(".help_popup_description",$(this).parent()).toggle();
+		if($(".help_popup_description",$(this).parent()).css("display")=="block") {
+			$(this).html("Hide the help!");
+		} else
+			$(this).html("Get some help");
+	});
+
+});
+/* End of Help Popup Modular Script*/
+</script>
+<div class="row skeleton"> 
+    <div id="area0" class="col-xs-6">
+        <!-- Questionary -->
+		<!-- Step -1-->
+        <div id="step_relevant_filter" class="steps">
+            <h1>Is this photo spam?</h1>
+				<p>If this is an advertisement or similar select "No"</p>
+				<p>Selecting "Yes" will skip this photo</p>
+				<p>Selecting "No" or "I don't know" will allow you to go ahead with the analysis</p>
+				<p>If you are not sure, select "No" or "I don't know"</p>					
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_relevant_filter btn btn-danger btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_relevant_filter btn btn-success btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+                <button class="step_relevant_filter btn btn-answer" value='NoPhoto'><i class="fa fa-white fa-exclamation"></i> No photo</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                <button class="step_relevant_filter btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step -1 -->
+        <!-- Step 0-->
+        <div id="step_0" class="steps">
+            <h1>Are there crops in the photo?</h1>
+			<div class="row help_popup col-xs-12">
+			<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>This is a simple filtering question to remove any photos that do not have crops in them and therefore are not relevant to the analysis.</p>
+					<p>Click "yes" if you see crop plants in the photo</p>
+					<p>If you are not sure what you are looking at, look for some of the following signs:</p>
+					<ul><li>Machinery, tools, irrigation, and other items associated with agriculture</li>
+						<li>Plants are in rows</li>
+						<li>Fences, hedgerows or other marking the boundaries of a field</li>
+						<li>Homogeneity in the field - all the plants are the same species, the same height, and/or look the same age</li></ul>
+					<p>You should also click "yes" if the crop appears dead as these can still give lots of information about the environmental conditions in the area</p>
+						
+					<div class="row">
+						<div class="col-sm-4">
+							<p>Maize (corn) just before harvest</p>
+							<a target="_blank" href="http://upload.wikimedia.org/wikipedia/commons/2/22/Oats_cover_crop.jpg"><img style="width:400px;" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Oats_cover_crop.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://commons.wikimedia.org/wiki/File:Oats_cover_crop.jpg">Alan Manson</a></p>
+						</div>
+						<div class="col-sm-4">
+							<p>Maize (corn) after mechanical harvest</p>
+							<a target="_blank" href="http://upload.wikimedia.org/wikipedia/commons/thumb/8/81/2004_0609_Italian_ryegrass_cover_crop.jpg/1024px-2004_0609_Italian_ryegrass_cover_crop.jpg"><img style="width:400px;" src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/81/2004_0609_Italian_ryegrass_cover_crop.jpg/1024px-2004_0609_Italian_ryegrass_cover_crop.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://commons.wikimedia.org/wiki/File:2004_0609_Italian_ryegrass_cover_crop.jpg">Alan Manson</a></p>
+						</div>
+						<div class="col-sm-4">
+							<p>Potato field</p>
+							<a target="_blank" href="http://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Potato_field_03.jpg/1280px-Potato_field_03.jpg"><img style="width:400px;" src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Potato_field_03.jpg/1280px-Potato_field_03.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://commons.wikimedia.org/wiki/File:Potato_field_03.jpg">Krish Dulal</a></p>
+						</div>
+					</div>
+					<hr>
+					<p>Click "no" if you are looking at a natural environment or an agricultural field without crops.</p>
+					<p>Natural environments can be recognised by the following:<p>
+					<ul><li>A variety of species growing in the same area</li>
+						<li>Different layers in the vegetation that may include an understorey (such as grasses), a midstorey (such as smaller trees and shrubs), and an overstorey (the taller trees)</li></ul>
+					<p>Here are some examples for which you would click "no"</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<p>Agricultural fields without crops</p>
+							<a target="_blank" href="http://www.fao.org/docrep/004/y0501e/y0501e81.jpg"><img style="width:400px;" src="http://www.fao.org/docrep/004/y0501e/y0501e81.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.fao.org/docrep/004/y0501e/y0501e07.htm">FAO</a></p>
+						</div>
+						<div class="col-sm-4">
+							<p>Agricultural fields used for grazing livestock</p>
+							<a target="_blank" href="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Gauteng-Sheep_Farming-001.jpg/1024px-Gauteng-Sheep_Farming-001.jpg"><img style="width:400px;" src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Gauteng-Sheep_Farming-001.jpg/1024px-Gauteng-Sheep_Farming-001.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://commons.wikimedia.org/wiki/User:NJR_ZA">NJR ZA</a></p>
+						</div>
+					</div>					
+				</div>
+			</div>	
+			<p>&nbsp;</p>			
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_0 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_0 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+                <button class="step_0 btn btn-answer" value='NoPhoto'><i class="fa fa-white fa-exclamation"></i> No photo</button>
+                <!-- If the user clicks this button, the saved answer will be value="Unknown"-->
+                <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_0 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 0 -->
+
+        <!-- Step 1-->
+        <div id="step_1" class="steps">
+            <h1>Can you see the method of cultivation?</h1>
+			<div class="row help_popup col-xs-12">
+			<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>This helps us know what sort of machinery and/or tools are used in agricultural activities in an area. Machinery or tools could be damaged during a disaster and will need to be replaced before people can begin working their land again.</p>
+					<p>Knowing the types of tools people are using can also give an idea of the agricultural production capabilities in an area. Those with with access to machinery and larger fields are likely to produce more than farmers working manually in smaller plots. At the same time, smaller subsistence farms might be more sensitive to drought and reduced yields are very likely to impact the local populations</p>
+					<ul><li><strong>Manual cultivation:</strong> All the work is done by hand, or using hand-held, non mechanised tools such as scythes, hand-pushed plows etc. A person working in their fields with their hands would be an example of manual cultivation. However a person standing in the field does not indicate manual cultivation.</li>
+						<li><strong>With animals:</strong> Similar to manual cultivation, however animals are used to help. If animals are involved they will often be hooked up to farming equipment</li>
+						<li><strong>By machine:</strong> Machines are used to improve the efficiency of cultivation. Look for mechanised equipment and tools such as tractors</li>
+					<hr>
+					<p>Here are some examples of the different methods of cultivation:</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<p>Manual cultivation</p>
+							<a target="_blank" href="http://slowpress.slowfood.it/upload/2012/658b727f54e64941504f0c317660dab7/img/risaia.jpg"><img style="width:400px;" src="http://slowpress.slowfood.it/upload/2012/658b727f54e64941504f0c317660dab7/img/risaia.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://salonedelgustoterramadre.slowfood.com/dettaglioStampa.plp?tipo=UltimaOra&id=ffaeff4adcbb448264fb4a1bc28d1a3ben">International Salone del Gusto</a></p>
+						</div>
+						<div class="col-sm-4">
+							<p>With animals</p>
+							<a target="_blank" href="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Dhital-agri.JPG/1024px-Dhital-agri.JPG"><img style="width:400px;" src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Dhital-agri.JPG/1024px-Dhital-agri.JPG" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://commons.wikimedia.org/wiki/File:Dhital-agri.JPG">Bishnu 35</a></p>
+						</div>
+						<div class="col-sm-4">
+							<p>By machine</p>
+							<a target="_blank" href="http://www.businessdailyafrica.com/image/view/-/1405796/medRes/141755/-/maxw/600/-/5djdw0/-/farmer.jpg"><img style="width:400px;" src="http://www.businessdailyafrica.com/image/view/-/1405796/medRes/141755/-/maxw/600/-/5djdw0/-/farmer.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.businessdailyafrica.com/Mechanised-farming-holds-key-to-better-returns-from-agriculture-/-/1248928/1405790/-/e3l7un/-/index.html">Bishnu 35</a></p>
+						</div>
+					</div>
+					<hr>
+					<p>Here are some examples for which you should click "I don't know"</p>
+					<div class="row">
+						<div class="col-sm-4">
+							<a target="_blank" href="http://3.bp.blogspot.com/_b5hcKABPlGI/TDA3E2lxhVI/AAAAAAAAg6Y/9A1caMvismw/s400/First+crop-1.jpg"><img style="width:400px;" src="http://3.bp.blogspot.com/_b5hcKABPlGI/TDA3E2lxhVI/AAAAAAAAg6Y/9A1caMvismw/s400/First+crop-1.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://newenergynews.blogspot.ch/2010/07/selfs-award-winning-solar-irrigation.html">S.E.L.F.</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_1 btn btn-answer" value='Manual'>Manual cultivation</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_1 btn btn-answer" value='Animals'>With animals</button>
+                <button class="step_1 btn btn-answer" value='Machine'>By machine</button>
+				<button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i>I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 1-->	
+		
+		<!-- Step 2-->
+        <div id="step_2" class="steps">
+            <h1>What species of crop are you seeing?</h1>
+			<p>Hint: search the internet to find pictures that will help you identify what you are seeing in the photo, you can use the links under each suggested species to start</p>
+            <p>
+            <a target="_blank" id="uri" class="btn" href=""><i class="fa fa-white fa-search"></i> View photo source</a>
+            </p>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>What crops are being grown where is useful baseline information. Together with the method of cultivation this information could help us answer questions needed in the response effort such as: What crops are being grown? Are the cash or subsistence crops? Which crops are prefered by the local population? Are local farmers adapting to the weather conditions and planting more drought tolerant crops during dry years?</p>
+					<h3>How can I identify a crop species?</h3>
+					<p>Identifying the species of crop you are looking at from just a photo can be very difficult. Here are a few tips to help your search:
+					<ul><li>Look at the photo context, often the crop is written in the caption or other associated text.</li>
+						<li>Compare the photos of the examples provided with the photo you are looking at</li>
+						<li>Use the resources available on the internet to help you.</li>					
+						<li>Use Google! Follow the link under the thumbnail to begin searching</li></ul>
+						</p>
+					<p><strong>None of the suggestions match?</strong> Try looking for lists of agricultural products for the region or country you are working on. Under the "Other" box there should be a link to a document on the relevant agricultural sector, you can start your search from here.</p>
+					<p><strong>What to search for?</strong><ul><li>Keywords: "agriculture", "crops", the name of the country in which you are working</li><li>"What do they grow in XX country?"</li><li>Agricultural department (or similar), NGO's, or organisations like the Food and Agriculture Organisation (FAO). These organisations often have inventories or reports on the agricultural activities within a particular country.</li></ul></p>
+					<p>Identifying a plant can often take some time, so don't get discouraged if you feel it is taking too long! And if you are stuck you can always click the "Unknown" button and move onto the next question.</p>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <ul class="thumbnails">
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://www.nextgencassava.org/img/resources/field-scientist-woman-farmer.jpg">
+                            <p style="font-size:10px;"> <a href="http://www.nextgencassava.org">Next Generation Cassava</a></p>
+                            <button class="step_2 btn btn-answer" value='Cassava'>Cassava</button>
+                        </div>
+						<p style="font-size:10px;"> <a target="_blank" href="https://www.google.com/?gws_rd=cr&ei=O9TfUr_vEsjDtAa9iIGIDw#q=cassava">Get more examples</a></p>
+                    </li>
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Banana_plantation_-_Flickr_-_exfordy.jpg/320px-Banana_plantation_-_Flickr_-_exfordy.jpg?uselang=en-gb">
+                            <p style="font-size:10px;"> <a target="_blank" href="http://www.flickr.com/people/32659528@N00">Brian Snelson</a></p>
+                            <button class="step_2 btn btn-answer" value='Banana'>Banana</button>							
+                        </div>
+						<p style="font-size:10px;"> <a target="_blank" href="https://www.google.com/?gws_rd=cr&ei=QdDnUurlI4HEtQbfvoDoCA#q=banana+plant">Get more examples</a></p>
+                    </li>
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Corn_plantation.JPG/320px-Corn_plantation.JPG?uselang=en-gb">
+                            <p style="font-size:10px;"> <a href="http://commons.wikimedia.org/wiki/Special:Search/Bhanupratap59">Bhanupratap59</a></p>
+                            <button class="step_2 btn btn-answer" value='Maize'>Maize (Corn)</button>
+                        </div>
+						<p style="font-size:10px;"> <a target="_blank" href="https://www.google.com/?gws_rd=cr&ei=QdDnUurlI4HEtQbfvoDoCA#q=maize">Get more examples</a></p>
+                    </li>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/6/6c/Potato_field_in_Ghughu-danga%2CDinajpur.jpg?uselang=en-gb">
+                            <p style="font-size:10px;"> <a href="http://commons.wikimedia.org/wiki/Special:Search/Uddinsultana">Uddinsultana</a></p>
+                            <button class="step_2 btn btn-answer" value='Potato'>Potato</button>
+                        </div>
+						<p style="font-size:10px;"> <a target="_blank" href="https://www.google.com/?gws_rd=cr&ei=N9jfUsanPMTGswb-lIG4Cg#q=potato">Get more examples</a></p>
+                    </li>
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Grain_millet%2C_early_grain_fill%2C_Tifton%2C_7-3-02.jpg/320px-Grain_millet%2C_early_grain_fill%2C_Tifton%2C_7-3-02.jpg">
+                            <p style="font-size:10px;"> <a href="http://en.wikipedia.org/wiki/File:Grain_millet,_early_grain_fill,_Tifton,_7-3-02.jpg">USDA-ARS</a></p>
+                            <button class="step_2 btn btn-answer" value='Millet'>Millet</button>
+                        </div>
+						<p style="font-size:10px;"> <a target="_blank" href="https://www.google.com/?gws_rd=cr&ei=N9jfUsanPMTGswb-lIG4Cg#q=millet">Get more examples</a></p>
+                    </li>
+                    <li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Sweet-potato-field%2Ckatori-city%2Cjapan.JPG/320px-Sweet-potato-field%2Ckatori-city%2Cjapan.JPG">
+                            <p style="font-size:10px;"> <a href="">katorisi</a></p>
+                            <button class="step_2 btn btn-answer" value='SweetPotato'>Sweet Potato</button>
+                        </div>
+						<p style="font-size:10px;"> <a target="_blank" href="https://www.google.com/?gws_rd=cr&ei=stvfUvaHMoiJtAa_uYDwCA#q=sweet%20potato">Get more examples</a></p>
+                    </li>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<li class="col-xs-4">
+						<div>
+							<p>
+							Not in the list? Type your identification here, these resources could help your identification:
+							</p>
+							<input id="crops_other" type="text" name="crops_other">
+							<br/>
+							<button class="button step_2 btn btn-answer">Done</button>
+						</div>
+					</li>
+					<li class="col-xs-4">
+                        <div class="thumbnail">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Vraagteken.svg/200px-Vraagteken.svg.png" style="width: 50%; height: 50%">
+                            <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_2 btn btn-answer" value='Unknown'>Unknown</button>
+                        </div>						
+                    </li>					
+                </ul>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 2 -->
+
+		<!-- Step 3-->
+        <div id="step_3" class="steps">
+            <h1>Are the crops green?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>This gives an indication of if the crops are alive or not. Crops that are not green may have suffered from water stress (<a href="http://en.wikipedia.org/wiki/Water_scarcity">What is water stress</a>). If the crops are not green it does not necessarily mean that they are suffering from water stress. Some crops might look dry and dead but in fact they are senescing or drying down at the end of their life-cycle, just before being harvested. This is a normal part of the production cycle for crops such as corn. In this question, however, we just need to know if the crops are green or not.</p>
+					<p><strong>Click Yes</strong> if you can see green in the plant</p>
+					<p><strong>Click No</strong> if the plants have no green at all, or less than 10% green</p>
+					<hr>
+					<p>Below are some examples for which you should click "yes"</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<p>Green healthy crops (this is a millet field)</p>
+							<a target="_blank" href="http://static.panoramio.com/photos/large/45493424.jpg"><img style="width:400px;" src="http://static.panoramio.com/photos/large/45493424.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.panoramio.com/user/4324714?with_photo_id=45493424">Cory Enger</a></p>
+							
+						</div>
+						<div class="col-sm-6">
+							<p>Crops that appear partially dry</p>
+							<a target="_blank" href="http://www.standeyo.com/NEWS/08_Food_Water/08_Food_Water_pics/080121.corn.drought.jpg"><img style="width:400px;" src="http://www.standeyo.com/NEWS/08_Food_Water/08_Food_Water_pics/080121.corn.drought.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.standeyo.com/NEWS/08_Food_Water/080121.drought-crops.html">Christopher T. Assaf</a></p>							
+						</div>
+					</div>
+					<div class="row">
+						<hr>
+						<p>...and some examples of photos for which you would click "No". Any field with less than 10% green should be classed as "No".</p>	  
+						<div class="col-sm-6">
+							<p>Dried-out crops</p>
+							<a href="http://www.cescan.dreamhosters.com/wp-content/uploads/2011/08/drought_corn.jpg"><img style="width:300px;" src="http://www.cescan.dreamhosters.com/wp-content/uploads/2011/08/drought_corn.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.cescan.ca/harambee-report/kenyan-drought/">CES Canada</a></p>
+							
+						</div>
+						<div class="col-sm-6">
+							<p>Crops that appear mostly dried out</p>
+							<a href="http://www.crh.noaa.gov/images/ict/wxstory/2011/July2011/drought%20effects%202011corn.JPG"><img style="width:300px;" src="http://www.crh.noaa.gov/images/ict/wxstory/2011/July2011/drought%20effects%202011corn.JPG" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.crh.noaa.gov/ict/scripts/viewstory.php?STORY_NUMBER=2011072217">Larry Radar</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_3 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_3 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+				<button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_1 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i>I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 3 -->	
+
+		<!-- Step 4-->
+        <div id="step_4" class="steps">
+            <h1>Do the plants seem to be wilting? Or their leaves rolling?</h1>
+			
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>Plants take water up from the soil. The water passes through the plant and evaporates via small pores called stomata on the leaves. This process is called transpiration. </p>
+					<p>Rolling leaves in plants is a defence mechanism to minimise transpiration during times of water stress so the plant won’t lose too much water (<a href="http://vanishingbananas.blogspot.ch/2012/07/thirsty-corn-and-rolled-up-leaves.html">Click here for more info</a>). Therefore rolling leaves are a sign that there might be drought. </p>
+					<p>Wilting of plants indicates that cells have begun to die and break down because of lack of water. Wilting plants might still be green but look limp, like they are falling over. They may even have begun to lose their green colour. The plant loses its green colour when the cell dies and the chlorophyll in the plant breaks down.</p>
+					<hr>
+					<p>Below are some examples of photos for which you would click "Yes":</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<p>Rolling corn leaves caused by drought stress</p>
+							<a href="http://www.agry.purdue.edu/ext/corn/news/articles.12/HotDryMidSeason-0625.html"><img style="width:400px;" src="http://www.agry.purdue.edu/ext/corn/news/articles.12/pix/20120624-002e.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"> <a href="http://www.agry.purdue.edu/ext/corn/news/articles.12/HotDryMidSeason-0625.html#">Purdue University</a></p>
+						</div>
+						<div class="col-sm-6">
+							<p>Corn wilting and drying out due to drought stress</p>
+							<a href="http://www.ianrpubs.unl.edu/pages/publicationD.jsp?publicationId=1048"><img style="width:400px;" src="http://www.ianrpubs.unl.edu/epublic/live/g1865/build/graphics/g1865-2.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"> <a href="http://www.ianrpubs.unl.edu/pages/publicationD.jsp?publicationId=1048">University of Nebraska</a></p>
+						</div>
+						<div class="col-sm-6">
+							<p>Tomato plant with some leaf rolling</p>
+							<a href="http://www.veggiegardener.com/wp-content/uploads/2009/08/leaf_roll1.jpg"><img style="width:400px;" src="http://www.veggiegardener.com/wp-content/uploads/2009/08/leaf_roll1.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"> <a href="http://www.veggiegardener.com/caring-for-tomatoes-after-transplanting/">Veggie Gardener</a></p>
+						</div>
+					</div>
+					<div class="row">
+						<hr>
+						<p>Here is an example of a photo for which you would click "No":</p>
+						<div class="col-sm-6">
+							<p>Healthy millet plant</p>
+							<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/MaliPicSA.jpg/757px-MaliPicSA.jpg"><img style="width:400px;" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/MaliPicSA.jpg/757px-MaliPicSA.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"> <a href="http://commons.wikimedia.org/w/index.php?title=User:Intsormil&action=edit&redlink=1">Intsormil</a></p>
+						</div>
+						<div class="col-sm-6">
+							<p>Healthy tomato plant</p>
+							<a href="http://oldworldgardenfarms.files.wordpress.com/2013/02/tomatoes-in-stake-a-cage.jpg"><img style="width:400px;" src="http://oldworldgardenfarms.files.wordpress.com/2013/02/tomatoes-in-stake-a-cage.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"> <a href="http://oldworldgardenfarms.com/2013/06/04/tomatoes-how-to-get-the-most-from-your-plants-in-the-garden/">Old World Garden Farms</a></p>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<p>&nbsp;</p>
+			<div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_4 btn btn-success btn-answer" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user clicks this button, the saved answer will be value="no"-->
+                <button class="step_4 btn btn-danger btn-answer" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+				<button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_4 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i>I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 4 -->
+		
+        <!-- Step 5-->
+        <div id="step_5" class="steps">
+            <h1>Do you see any green vegetation in the field?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i> Need help with the question? <a href="javascript:void(0)">Click here!</a>
+				<div class="help_popup_description col-xs-12">
+					<p>If the non-crop plants growing in close proximity to the crops are green but the crops are not green then they might be dried down and ready to harvest.  If both the crops and the surrounding vegetation are brown or showing signs of drought stress then it is likely there is a drought.</p>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_5 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_5 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+				<button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_5 btn btn-answer" value='Unkown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 5 -->
+		
+        <!-- Step 6-->
+        <div id="step_6" class="steps">
+            <h1>Is the vegetation around the edges of the field green?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i> Need help with the question? <a href="javascript:void(0)">Click here!</a>
+				<div class="help_popup_description col-xs-12">
+					<p>If the non-crop plants growing in close proximity to the crops are green but the crops are not green then they might be dried down and ready to harvest.  If both the crops and the surrounding vegetation are brown or showing signs of drought stress then it is likely there is a drought.</p>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_6 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_6 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+				<button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_6 btn btn-answer" value='Unkown'><i class="fa fa-white fa-question-sign"></i> I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 6 -->
+
+        <!-- Step 7-->
+        <div id="step_7" class="steps">
+            <h1>Does the crop look like it has been harvested?</h1>
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i>How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>If the crop has been successfully harvested prior to or during the disaster then there was likely some food from it.</p>
+					<p>Signs of harvest could be: <ul><li>Plants that are bent over or cut</li><li>Piles of plants that were cut down</li><li>Plants that look like the tops were cut off</li></ul></p>
+					<hr>
+					<p>Below are some examples of photos for which you would click "Yes"</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<p>Mechanically harvested crops</p>
+							<a href="https://farm4.staticflickr.com/3559/4560529380_eedc81f03e_b.jpg"><img style="width:400px;" src="https://farm4.staticflickr.com/3559/4560529380_eedc81f03e_b.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="https://www.flickr.com/photos/48066445@N08/">Blodgett Farms</a></p>						
+						</div>
+						<div class="col-sm-6">
+							<p>Hand harvesting sorghum, note relatively organised piles of stems</p>
+							<a href="http://www.sorghum.silvaeculture.co.uk/cfc/1styr-rpt/Image5.jpg"><img style="width:400px;" src="http://www.sorghum.silvaeculture.co.uk/cfc/1styr-rpt/Image5.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.sorghum.silvaeculture.co.uk/cfc/1styr-rpt/1styrrep.html">Christopher T. Assaf</a></p>
+						</div>
+					</div>					
+					<hr>
+					<div class="row">
+						<p>...and some examples of photos for which you would click "No"</p>	  
+						<div class="col-sm-6">
+							<p>Crops that appear mostly dried out</p>
+							<a href="http://media.salon.com/2011/07/when_food_shortages_bring_war.jpg"><img style="width:400px;" src="http://media.salon.com/2011/07/when_food_shortages_bring_war.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://www.salon.com/2011/07/19/food_shortage_politics/">Salon</a></p>
+						
+						</div>
+						<div class="col-sm-6">
+							<p>Whole plants that have fallen down</p>
+							<a href="http://3.bp.blogspot.com/-S3VUPU4648g/T1E5zKbddeI/AAAAAAAAIjM/RTrgI6LGhzU/s400/corn+lodging.jpg"><img style="width:400px;" src="http://3.bp.blogspot.com/-S3VUPU4648g/T1E5zKbddeI/AAAAAAAAIjM/RTrgI6LGhzU/s400/corn+lodging.jpg" class="img-thumbnail"></a>
+							<p style="font-size:10px;"><span class="fa fa-picture"></i> <a href="http://gmopundit.blogspot.fr/2012/03/bt-corn-on-corn-crop-rotation-is-bad.html">Michael Grey</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_7 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_7 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+				<button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_7 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i>I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 7 -->
+		
+		<!-- Step 8-->
+        <div id="step_8" class="steps">
+            <h1>Are there any plants missing from the rows?</h1>
+			
+			<div class="row help_popup col-xs-12">
+				<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
+				<div class="help_popup_description col-xs-12">
+					<p>When crops are planted, seeds are typically spaced a set distance apart. Missing plants could be the result of soil conditions that are too dry for germination, or the seed germinated but the soil was too dry for the seedling.</p>
+					<p>Look at the rows of crops, if the gap between two plants looks unusually large relative to the average gap in the row, there are probably plants missing. In the photo below, note the larger gaps between some of the plants in the foreground. You should select "Yes" in these cases</p>
+					<div class="col-sm-12">
+						<a href="http://www.agry.purdue.edu/ext/corn/news/articles.12/pix/20120620-019e.jpg"><img style="width:400px;" src="http://www.agry.purdue.edu/ext/corn/news/articles.12/pix/20120620-019e.jpg"></img></a>
+						<p style="font-size:10px;"> <a href="http://www.agry.purdue.edu/ext/corn/news/articles.12/HotDryMidSeason-0625.html#">Purdue University</a></p>
+					</div>
+					<p>Click "No" for the following example - this is a field with no missing plants.
+					<div class="col-sm-12">
+						<a href="http://upload.wikimedia.org/wikipedia/commons/b/be/Mais_fg01.jpg"><img style="width:400px;" src="http://upload.wikimedia.org/wikipedia/commons/b/be/Mais_fg01.jpg"></img></a>
+						<p style="font-size:10px;"> <a href="http://commons.wikimedia.org/wiki/User:Dysmachus">Fritz Geller-Grimm</a></p>
+					</div>
+					<p>
+				</div>
+			</div>
+			<p>&nbsp;</p>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="step_8 btn btn-answer btn-success" value='Yes'><i class="fa fa-white fa-thumbs-up"></i> Yes</button>
+                <!-- If the user cli11ks this button, the saved answer will be value="no"-->
+                <button class="step_8 btn btn-answer btn-danger" value='No'><i class="fa fa-white fa-thumbs-down"></i> No</button>
+				<button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read the Get Some Help section?" class="step_8 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i>I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Step 8 -->
+		
+        <!-- Last Stepp -->
+        <div id="last_step" class="steps">
+            <h1>Thanks! You have fully analyzed one picture</h1>
+            <div id="answer"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="yes"-->
+                <button class="last_step btn btn-answer btn-large btn-success" value='Submit'>Save it and load another one</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div>
+        <!-- End Last Step-->
+		
+        <!-- End questionary -->
+        <div style="margin-top:5px;">
+            <button class="back btn btn-answer" style="display:none;"><i class="fa fa-chevron-left"></i> Go to previous step</button>
+        </div>
+    </div>
+    <!--<div id="img-details" class="col-xs-4">-->
+        <!-- Collapse -->
+        <!--<div class="accordion" id="accordion2">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                       EXIF data 
+                    </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+                    <div id="exif" class="accordion-inner">
+                        This picture does not have any EXIF data.
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- End collapse -->
+        <!--</div>-->
+
+    <!-- +FC UNOSAT ZOOM MODIFICATION -->
+    <div id="area1" class="col-xs-6 affix-top">
+		<div class="row">
+			<div class="col-xs-12" id="photo-link">
+					<img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
+			</div>
+			<div class="col-xs-12" style="margin-top:10px;">
+					<a href="javascript:zoomin()" class="btn btn-primary">Zoom IN</a>
+					&nbsp;|&nbsp;
+					<a href="javascript:zoomout()"  class="btn btn-primary">Zoom OUT</a>
+					&nbsp;|&nbsp;
+					<a id="img_source" target="_blank" href="#"  class="btn btn-primary">View Photo Source</a>
+			</div>
+		</div>
+    </div>
+	<!-- -FC UNOSAT ZOOM MODIFICATION -->
+
+</div><!-- End of Skeleton Row -->
+
+<div class="row">
+    <!-- Success and Error Messages for the user --> 
+    <div class="col-xs-6 col-xs-offset-2" style="height:50px">
+        <div id="success" class="alert alert-success" style="display:none;">
+            <a class="close">×</a>
+            <strong>Well done!</strong> Your answer has been saved
+        </div>
+        <div id="loading" class="alert alert-info" style="display:none;">
+            <a class="close">×</a>
+            Loading next task...
+        </div>
+        <div id="taskcompleted" class="alert alert-info" style="display:none;">
+            <strong>The task has been completed!</strong> Thanks a lot!
+        </div>
+        <div id="finish" class="alert alert-success" style="display:none;">
+            <strong>Congratulations!</strong> You have participated in all available tasks!
+            <br/>
+            <div class="alert-actions">
+                <a class="btn small" href="/">Go back</a>
+                <a class="btn small" href="/app">or, Check other applications</a>
+            </div>
+        </div>
+        <div id="error" class="alert alert-error" style="display:none;">
+            <a class="close">×</a>
+            <strong>Error!</strong> Something went wrong, please contact the site administrators
+        </div>
+    </div> <!-- End Success and Error Messages for the user -->
+</div> <!-- End of Row -->
+
+<!-- +FC UNOSAT WORKFLOW/ZOOM MODIFICATION -->
+<script src="/static/js/pybossa/unosat.js"></script>
+<!-- -FC UNOSAT WORKFLOW/ZOOM MODIFICATION -->
+
+<script>
+
+function zoomin(){
+    $("#photo-link").addClass("zoomed");
+
+}
+
+function zoomout() {
+    $("#photo-link").removeClass("zoomed");
+    
+}
+pybossa.taskLoaded(function(task, deferred) {
+    if ( ! $.isEmptyObject(task) ) {
+        // load image from flickr
+        var img = $('<img />');
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+        img.attr('src', task.info.url);
+        img.attr('id', 'anno_' + task.id);
+        img.addClass('img-polaroid');
+        img.addClass('annotable');
+        task.info.image = img;
+        // Initiate answer with default values
+        task.steps = [0];
+        task.answer = {"img": task.info.url,
+                       "task_id": task.id,
+                       "ag": "",
+                       "agCultivation": "",
+                       "cropID": "",
+                       "cropGreen": "",
+					   "cropWilting": "",
+                       "cropOtherGreen": "",
+					   "cropOtherGreenExternal": "",
+                       "cropHarvest": "",
+					   "cropMissing": ""}
+    }
+    else {
+        deferred.resolve(task);
+    }
+});
+
+pybossa.presentTask(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        $('#photo-link').html('').append(task.info.image);
+        //$("#question").html(task.info.question);
+        $('#task-id').html(task.id);
+        $("#img_source").attr("href", task.info.uri);
+        $(".back").hide();
+
+        // Hide all steps first 
+        $(".steps").hide();
+        // Show first step
+        $("#step_relevant_filter").show();
+        // Reset input fields
+        //$("#n_stories").val(0);
+
+        $('.btn-answer').off('click').on('click', function(evt) {
+            // Get value of pressed button
+            var tmp = $(evt.target).attr("value");
+			
+			// PAGINATION
+          
+			var pag_max_steps = $(".steps").length;
+			var pag_n_steps = $(".steps").index($(".steps:visible"));
+			var pag_perc=(((pag_n_steps+1)/(pag_max_steps-1))*100).toFixed(0);
+			$("#progress_bar_task").css("width",pag_perc+"%");
+			$("#progress_bar_task").html(pag_perc+"%");
+
+			// PAGINATION
+          
+			// Check if step is the photo filter
+            if ($(evt.target).hasClass('step_relevant_filter')) {
+                
+                $(".steps").hide();
+                if (tmp == "No") {
+                    //alert("DB: Yes");
+                    $("#step_0").show();
+                    
+                    }
+                else {
+					alert("DB: No ajax");
+					$.ajax({
+						url: url + 'api/filter/' + taskid +'/no',
+						dataType: 'json'
+					});
+                    $("#last_step").show();
+                }
+            } 
+			
+            // Check if step is 0
+            if ($(evt.target).hasClass('step_0')) {
+                task.answer.ag = tmp;
+                $(".steps").hide();
+                if (tmp == "Yes") {
+                    task.steps.push(1);
+                    $("#step_1").show();
+                    $(".back").show();
+                    }
+                else {
+                    $("#last_step").show();
+                }
+            } 
+             // Check if step is 1
+            if ($(evt.target).hasClass('step_1')) {
+                task.answer.agCultivation = tmp;
+                $(".steps").hide();
+                task.steps.push(2);
+                $("#step_2").show();
+            }
+
+            // Check if step is 2
+            if ($(evt.target).hasClass('step_2')) {
+                task.answer.cropID = tmp;
+                $(".steps").hide();
+                task.steps.push(3);
+                $("#step_3").show();               
+            }
+
+
+           // Check if step is 3
+            if ($(evt.target).hasClass('step_3')) {
+                // This steps gets the info from an input field
+                //var tmp = $("#n_stories").val();
+                task.answer.cropGreen = tmp;
+                $(".steps").hide();
+                if (tmp == 'Yes') {
+                    task.steps.push(4);
+                    $("#step_4").show();
+                }
+                else {
+                    task.steps.push(5);
+                    $("#step_5").show();
+                }
+            }
+			
+			// Check if step is 4
+            if ($(evt.target).hasClass('step_4')) {
+                task.answer.cropWilting = tmp;
+                $(".steps").hide();
+                task.steps.push(7);
+                $("#step_7").show();
+            }
+			
+			// Check if step is 5
+            if ($(evt.target).hasClass('step_5')) {
+                task.answer.cropOtherGreen = tmp;
+                $(".steps").hide();
+                task.steps.push(6);
+                $("#step_6").show();
+            }			
+
+            // Check if step is 6
+            if ($(evt.target).hasClass('step_6')) {
+                task.answer.cropOtherGreenExternal= tmp;
+                $(".steps").hide();
+                task.steps.push(7);
+                $("#step_7").show();
+            }
+			
+            // Check if step is 7
+            if ($(evt.target).hasClass('step_7')) {
+                task.answer.cropHarvest= tmp;
+                $(".steps").hide();
+                task.steps.push(8);
+                $("#step_8").show();
+            }
+			
+            // Check if step is 8
+            if ($(evt.target).hasClass('step_8')) {
+                task.answer.cropMissing = tmp;
+                $(".steps").hide();
+                $("#last_step").show();
+            } 
+
+            // Check if step is last
+            if ($(evt.target).hasClass('last_step')) {
+                zoomout();
+				$(".help_popup_description").css("display","none");
+                $("input:checkbox").removeAttr("checked");
+                //+FC UNOSAT WORKFLOW MODIFICATION
+                saveTask(task.id, task.answer).done(function() {
+                deferred.resolve();
+                })
+                //-FC UNOSAT WORKFLOW MODIFICATION
+            }
+
+            // Check if back button is pressed
+            if ($(evt.target).hasClass('back')) {
+                console.log(JSON.stringify(task.steps));
+                zoomout();
+                $("#last_step").hide();
+                var last_step = task.steps.pop();
+                var id = "#step_" + last_step.toString();
+                var prev_id = "#step_" + task.steps[task.steps.length - 1];
+                $(id).hide();
+                $(prev_id).show();
+                if (prev_id == "#step_0") {
+                    $(".back").hide();
+                    task.steps = [0];
+                }
+
+                //if ((prev_id == "#step_9") || (prev_id == "#step_11") || (prev_id == '#step_14') || (prev_id == '#step_15')) {
+                //    anno.reset();
+                //    $("#crack_category").hide();
+                //    $("#crack_rebars").hide();
+                //    $("#crack_rebars").hide();
+                //    $("#damage_category").hide();
+                //    $("#answer").hide();
+                //}
+
+                console.log(JSON.stringify(task.steps));
+            }
+            // print answer on console
+            // console.log(JSON.stringify(task.answer));
+        });
+
+
+        //$("#btn-submit").html("<i class='fa-repeat'></i> I don't recognize any person, try next one");
+        //$("#btn-submit").removeClass("btn-success");
+        //if (!$.isEmptyObject(task.info.exif)) {
+        //    //var keys = Object.keys(task.info.exif);
+        //    //$("#exif").html("");
+        //    //for(i=0;i<keys.length;i++){
+        //    //$("#exif").append("<p><strong>" + keys[i] + "</strong>: " + task.info.exif[keys[i]] + "</p>");
+        //    //}
+        //    $("#exif").html(JSON.stringify(task.info.exif));
+        //}
+        //else {
+        //    $("#exif").html("There is no EXIF data in this picture.");
+        //}
+
+        //anno.makeAnnotatable(document.getElementById('anno_' + task.id));
+
+        //anno.addHandler('onAnnotationCreated', function(annotation) {
+        //    //console.log(annotation.text);
+        //    $("#btn-submit").html("<i class='fa fa-save'></i> Save current annotations");
+        //    $("#btn-submit").addClass("btn-success");
+        //});
+
+        //$('.btn-answer').off('click').on('click', function(evt) {
+        //    var answer = $(evt.target).attr("value");
+        //    if (typeof answer != 'undefined') {
+        //        //console.log(answer);
+        //        pybossa.saveTask(task.id, anno.getAnnotations()).done(function() {
+        //            deferred.resolve();
+        //        });
+        //        $("#loading").fadeIn(500);
+        //        if ($("#disqus_thread").is(":visible")) {
+        //            $('#disqus_thread').toggle();
+        //            $('.btn-disqus').toggle();
+        //        }
+        //    }
+        //    else {
+        //        $("#error").show();
+        //    }
+        //});
+        $("#loading").hide();
+    }
+    else {
+        $(".skeleton").hide();
+        $("#loading").hide();
+        $("#finish").fadeIn(500);
+    }
+});
+
+
+
+
+//+FC UNOSAT WORKFLOW MODIFICATION
+make_run('cropid2','cropid2');
+//-FC UNOSAT WORKFLOW MODIFICATION
+
+</script>
