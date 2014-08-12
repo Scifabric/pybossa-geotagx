@@ -320,34 +320,35 @@ pybossa.presentTask(function(task, deferred) {
         $("#step_relevant_filter").show();
         // Reset input fields
         //$("#n_stories").val(0);
-      
-        
-        var pag_max_steps = ($(".steps").length);
-      	var pag_n_steps = 0;
-      	var pag_perc=((1/(pag_max_steps))*100).toFixed(0);
-      
-      	$("#progress_bar_task").css("width",pag_perc+"%");
-      	$("#progress_bar_task").html(pag_perc+"%");
 
         $('.btn-answer').off('click').on('click', function(evt) {
             // Get value of pressed button
             var tmp = $(evt.target).attr("value");
 			
-			
+			// PAGINATION
+          
+			var pag_max_steps = $(".steps").length;
+			var pag_n_steps = $(".steps").index($(".steps:visible"));
+			var pag_perc=(((pag_n_steps+1)/(pag_max_steps-1))*100).toFixed(0);
+			$("#progress_bar_task").css("width",pag_perc+"%");
+			$("#progress_bar_task").html(pag_perc+"%");
+
+			// PAGINATION
           
 			// Check if step is the photo filter
             if ($(evt.target).hasClass('step_relevant_filter')) {
                 
                 $(".steps").hide();
                 if (tmp == "No") {
-                    
+                    //alert("DB: Yes");
                     $("#step_0").show();
                     
                     }
                 else {
-                  
+					alert("DB: No ajax");
 					$.ajax({
-						url: 'http://www.geotagx.org/add_one_spam?task_id=' + task.id
+						url: url + 'api/filter/' + taskid +'/no',
+						dataType: 'json'
 					});
                     $("#last_step").show();
                 }
@@ -433,20 +434,6 @@ pybossa.presentTask(function(task, deferred) {
 
                 console.log(JSON.stringify(task.steps));
             }
-          
-          // PAGINATION
-          
-			
-			//adding one for the current step
-         	pag_n_steps = ($(".steps").index($(".steps:visible")))+1;
-			
-          	pag_perc=(((pag_n_steps)/(pag_max_steps))*100).toFixed(0);
-            
-			$("#progress_bar_task").css("width",pag_perc+"%");
-			$("#progress_bar_task").html(pag_perc+"%");
-
-			// PAGINATION
-          
             // print answer on console
             // console.log(JSON.stringify(task.answer));
         });
@@ -504,7 +491,7 @@ pybossa.presentTask(function(task, deferred) {
 
 
 //+FC UNOSAT WORKFLOW MODIFICATION
-make_run('test_wf','test_wf');
+make_run('childrensrights','humanrights');
 //-FC UNOSAT WORKFLOW MODIFICATION
 
 </script>
