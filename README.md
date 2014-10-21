@@ -3,7 +3,7 @@ pybossa-geotagx
 
 Geotagx.org is a geotagging platform for humanitarian aims. It is led by the [United Nations Institute for Training and Research’s Operational Satellite Applications Programme](http://www.unitar.org/unosat/) (UNITAR/UNOSAT), based within [CERN](http://home.web.cern.ch/), as part of the [Citizen Cyberlab](http://citizencyberlab.eu/) project.
 
-Note this repository only shares code for specific geotagx 'task presenter' modules. For the main code, see https://github.com/geotagx/pybossa. Please share bugs, ask questions or suggest enhancements here: https://github.com/geotagx/pybossa/issues
+Note this repository only shares HTML and Javascript coding for specific geotagx modules and projects. For the underlying code, see https://github.com/geotagx/pybossa. Please share bugs, ask questions or suggest enhancements here: https://github.com/geotagx/pybossa/issues
 
 License/copyright
 =================
