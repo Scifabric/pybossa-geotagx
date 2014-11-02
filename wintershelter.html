@@ -26,7 +26,7 @@ $( document ).ready(function() {
         <!-- Questionary -->
 		<!-- Step -1-->
         <div id="step_relevant_filter" class="steps">
-            <h1>Is this image spam or fake?</h1>
+            <h1>Is this photo spam or fake?</h1>
 				<p>If this image is spam, advertising or fake select "Yes". If it looks legitimate, select "No".</p>
 				<p>Selecting "Yes" will skip this photo</p>
 				<p>Selecting "No" or "I don't know" will allow you to go ahead with the analysis</p>
@@ -43,6 +43,7 @@ $( document ).ready(function() {
             </div><!-- End of DIV for the submission buttons -->
         </div>
         <!-- End Step -1 -->
+		
        <!-- Step 0-->
         <div id="step_0" class="steps">
             <h1>Do you see shelter in this photo?</h1>
@@ -67,8 +68,8 @@ $( document ).ready(function() {
             </div><!-- End of DIV for the submission buttons -->
         </div>
         <!-- End Step 0 -->
-
-        <!-- Step 1-->
+		
+		<!-- Step 1-->
         <div id="step_1" class="steps">
             <h1>Is the shelter raised off the ground?</h1>
 			<div class="row help_popup col-xs-12">
@@ -91,7 +92,7 @@ $( document ).ready(function() {
                 <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read 'Get some help' above?" class="step_1 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i>Don't know</button>
             </div><!-- End of DIV for the submission buttons -->
         </div>
-        <!-- End Step 1-->	
+        <!-- End Step 1 -->
 		
 		<!-- Step 2-->
         <div id="step_2" class="steps">
@@ -117,10 +118,10 @@ $( document ).ready(function() {
             </div><!-- End of DIV for the submission buttons -->
         </div>
         <!-- End Step 2 -->
-		
+
 		<!-- Step 3-->
         <div id="step_3" class="steps">
-            <h1>Is there space to put a chimney safely inside the shelter?</h1>
+               <h1>Is there space to put a chimney safely inside the shelter?</h1>
 			<div class="row help_popup col-xs-12">
 			<i class="fa fa-exclamation-circle"></i> How do I answer this question? <a class="help_popup_a" href="javascript:void(0)">Get some help</a>
 				<div class="help_popup_description col-xs-12">
@@ -141,13 +142,13 @@ $( document ).ready(function() {
                 <button data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Did you read 'Get some help' above?" class="step_3 btn btn-answer" value='Unknown'><i class="fa fa-white fa-question-sign"></i>Don't know</button>
             </div><!-- End of DIV for the submission buttons -->
         </div>
-        <!-- End Step 3 -->
+        <!-- End Step 3 -->	
 		
         <!-- Last Step -->
         <div id="last_step" class="steps">
-            <h1>Thanks! You have fully analyzed one image.</h1>
+            <h1>Thanks! Your analysis is complete.</h1>
             <p> If you have feedback or would like to discuss this analysis, please <a href="https://github.com/geotagx/pybossa/issues">contribute to our open repository</a> or <a href="mailto:cobi.smith@unitar.org?Subject=GeoTag-X feedback" target="_top">send an email</a> if you prefer. </p>
-            <div id="answer"> <!-- Start DIV for the submission buttons -->
+             <div id="answer"> <!-- Start DIV for the submission buttons -->
                 <!-- If the user clicks this button, the saved answer will be value="yes"-->
                 <button class="last_step btn btn-answer btn-large btn-success" value='Submit'>Save it and load another one</button>
             </div><!-- End of DIV for the submission buttons -->
@@ -203,7 +204,6 @@ $( document ).ready(function() {
         <div id="success" class="alert alert-success" style="display:none;">
             <a class="close">×</a>
             <strong>Well done!</strong> Your answer has been saved
-			<p> If you have feedback or would like to discuss this analysis, please <a href="https://github.com/geotagx/pybossa/issues">contribute to our open repository</a> or <a href="mailto:cobi.smith@unitar.org?Subject=GeoTag-X feedback" target="_top">send an email</a> if you prefer. </p>
         </div>
         <div id="loading" class="alert alert-info" style="display:none;">
             <a class="close">×</a>
@@ -211,11 +211,9 @@ $( document ).ready(function() {
         </div>
         <div id="taskcompleted" class="alert alert-info" style="display:none;">
             <strong>The task has been completed!</strong> Thanks a lot!
-			<p> If you have feedback or would like to discuss this analysis, please <a href="https://github.com/geotagx/pybossa/issues">contribute to our open repository</a> or <a href="mailto:cobi.smith@unitar.org?Subject=GeoTag-X feedback" target="_top">send an email</a> if you prefer. </p>
         </div>
         <div id="finish" class="alert alert-success" style="display:none;">
             <strong>Congratulations!</strong> You have participated in all available tasks!
-			<p> If you have feedback or would like to discuss this analysis, please <a href="https://github.com/geotagx/pybossa/issues">contribute to our open repository</a> or <a href="mailto:cobi.smith@unitar.org?Subject=GeoTag-X feedback" target="_top">send an email</a> if you prefer. </p>
             <br/>
             <div class="alert-actions">
                 <a class="btn small" href="/">Go back</a>
@@ -224,7 +222,7 @@ $( document ).ready(function() {
         </div>
         <div id="error" class="alert alert-error" style="display:none;">
             <a class="close">×</a>
-            <strong>Error!</strong> Something went wrong, <p> please <a href="https://github.com/geotagx/pybossa/issues">share the bug in our open repository</a> so we can fix it.</p>
+            <strong>Error!</strong> Something went wrong, please contact the site administrators
         </div>
     </div> <!-- End Success and Error Messages for the user -->
 </div> <!-- End of Row -->
@@ -263,8 +261,8 @@ pybossa.taskLoaded(function(task, deferred) {
                        "task_id": task.id,
                        "shelter": "",
                        "shelterraised": "",
-                       "shelterflysheet": "",
-					   "shelterchimney"}
+					   "shelterflysheet": "",
+                       "shelterchimney": "",}
     }
     else {
         deferred.resolve(task);
@@ -310,16 +308,14 @@ pybossa.presentTask(function(task, deferred) {
                     
                     }
                 else {
-                  //alert("DB: No ajax");
-                  /*$.ajax({
+					alert("DB: No ajax");
+					$.ajax({
 						url: url + 'api/filter/' + taskid +'/no',
 						dataType: 'json'
-					});*/
-                 	$("#progress_bar_task").css("width","100%");
-					$("#progress_bar_task").html("100%");
+					});
                     $("#last_step").show();
                 }
-            }
+            } 
 			
             // Check if step is 0
             if ($(evt.target).hasClass('step_0')) {
@@ -338,31 +334,25 @@ pybossa.presentTask(function(task, deferred) {
             if ($(evt.target).hasClass('step_1')) {
                 task.answer.shelterraised = tmp;
                 $(".steps").hide();
-				if (tmp == "Yes") {
                 task.steps.push(2);
                 $("#step_2").show();
-				$(".back").show();
-				}
-				else {
-                    $("#last_step").show();
-				}
             } 
 
-            // Check if step is 2
+              // Check if step is 2
             if ($(evt.target).hasClass('step_2')) {
                 task.answer.shelterflysheet = tmp;
                 $(".steps").hide();
                 task.steps.push(3);
                 $("#step_3").show();               
             }
-			
-			    // Check if step is 3
+
+			  // Check if step is 3
             if ($(evt.target).hasClass('step_3')) {
-                task.answer.shelterchimney = tmp;
+                  task.answer.shelterchimney = tmp;
                 $(".steps").hide();
-                $("#last_step").show();
-            } 
-		
+                $("#last_step").show();              
+            }
+			
             // Check if step is last
             if ($(evt.target).hasClass('last_step')) {
                 zoomout();
@@ -458,7 +448,7 @@ pybossa.presentTask(function(task, deferred) {
 
 
 //+FC UNOSAT WORKFLOW MODIFICATION
-make_run('wintershelter');
+make_run('wintershelter','wintershelter');
 //-FC UNOSAT WORKFLOW MODIFICATION
 
 </script>
